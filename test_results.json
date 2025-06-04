@@ -1,0 +1,56 @@
+{
+  "imports": {
+    "status": "PASS",
+    "torch": "2.7.0",
+    "cuda_available": false,
+    "pytorch_forecasting": true,
+    "stable_baselines3": true,
+    "mlflow": true
+  },
+  "config": {
+    "status": "PASS"
+  },
+  "data_loading": {
+    "status": "PASS",
+    "files_found": 4641,
+    "sample_shape": [
+      3861,
+      10
+    ]
+  },
+  "feature_engineering": {
+    "status": "PASS",
+    "sample_shape": [
+      1000,
+      5
+    ],
+    "features_shape": [
+      901,
+      114
+    ],
+    "feature_count": 114
+  },
+  "tft_model": {
+    "status": "PASS"
+  },
+  "rl_environment": {
+    "status": "FAIL",
+    "error": "single positional indexer is out-of-bounds"
+  },
+  "short_training": {
+    "status": "PASS",
+    "tft_training": false,
+    "rl_training": true,
+    "model_save_load": true,
+    "phases_passed": "3/3"
+  },
+  "cloud_script": {
+    "status": "PASS",
+    "checks": {
+      "detect_cloud_environment": true,
+      "CloudTrainer class": true,
+      "main function": true,
+      "argparse": true
+    }
+  }
+}
