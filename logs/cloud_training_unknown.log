@@ -1,0 +1,468 @@
+2025-06-04 22:24:36,209 - __main__ - INFO - Initializing CloudTrainer for unknown
+2025-06-04 22:24:36,219 - __main__ - INFO - CUDA not available, using CPU
+2025-06-04 22:24:36,232 - __main__ - INFO - CloudTrainer initialization completed for unknown
+2025-06-04 22:24:36,232 - __main__ - INFO - Starting cloud training pipeline on unknown
+2025-06-04 22:24:36,352 - __main__ - INFO - === Cloud Data Preparation ===
+2025-06-04 22:24:36,352 - __main__ - INFO - Loading data for unknown environment
+2025-06-04 22:24:36,353 - src.data.data_loader - INFO - Loading data for 4675 dates from 2010-06-06 to 2025-05-28
+2025-06-04 22:24:37,577 - src.data.data_loader - WARNING - Data file not found for date 2010-12-24: data/glbx-mdp3-20101224.ohlcv-1m.csv
+2025-06-04 22:24:38,199 - src.data.data_loader - WARNING - Data file not found for date 2011-04-22: data/glbx-mdp3-20110422.ohlcv-1m.csv
+2025-06-04 22:24:39,597 - src.data.data_loader - WARNING - Data file not found for date 2011-12-25: data/glbx-mdp3-20111225.ohlcv-1m.csv
+2025-06-04 22:24:39,597 - src.data.data_loader - WARNING - Data file not found for date 2011-12-26: data/glbx-mdp3-20111226.ohlcv-1m.csv
+2025-06-04 22:24:39,622 - src.data.data_loader - WARNING - Data file not found for date 2012-01-01: data/glbx-mdp3-20120101.ohlcv-1m.csv
+2025-06-04 22:24:39,622 - src.data.data_loader - WARNING - Data file not found for date 2012-01-02: data/glbx-mdp3-20120102.ohlcv-1m.csv
+2025-06-04 22:24:41,600 - src.data.data_loader - WARNING - Data file not found for date 2012-12-25: data/glbx-mdp3-20121225.ohlcv-1m.csv
+2025-06-04 22:24:41,628 - src.data.data_loader - WARNING - Data file not found for date 2013-01-01: data/glbx-mdp3-20130101.ohlcv-1m.csv
+2025-06-04 22:24:41,718 - src.data.data_loader - WARNING - Data file not found for date 2013-01-20: data/glbx-mdp3-20130120.ohlcv-1m.csv
+2025-06-04 22:24:41,859 - src.data.data_loader - WARNING - Data file not found for date 2013-02-17: data/glbx-mdp3-20130217.ohlcv-1m.csv
+2025-06-04 22:24:42,077 - src.data.data_loader - WARNING - Data file not found for date 2013-03-29: data/glbx-mdp3-20130329.ohlcv-1m.csv
+2025-06-04 22:24:42,379 - src.data.data_loader - WARNING - Data file not found for date 2013-05-26: data/glbx-mdp3-20130526.ohlcv-1m.csv
+2025-06-04 22:24:42,922 - src.data.data_loader - WARNING - Data file not found for date 2013-09-01: data/glbx-mdp3-20130901.ohlcv-1m.csv
+2025-06-04 22:24:43,659 - src.data.data_loader - WARNING - Data file not found for date 2013-12-25: data/glbx-mdp3-20131225.ohlcv-1m.csv
+2025-06-04 22:24:43,685 - src.data.data_loader - WARNING - Data file not found for date 2014-01-01: data/glbx-mdp3-20140101.ohlcv-1m.csv
+2025-06-04 22:24:43,772 - src.data.data_loader - WARNING - Data file not found for date 2014-01-19: data/glbx-mdp3-20140119.ohlcv-1m.csv
+2025-06-04 22:24:43,923 - src.data.data_loader - WARNING - Data file not found for date 2014-02-16: data/glbx-mdp3-20140216.ohlcv-1m.csv
+2025-06-04 22:24:44,275 - src.data.data_loader - WARNING - Data file not found for date 2014-04-18: data/glbx-mdp3-20140418.ohlcv-1m.csv
+2025-06-04 22:24:44,574 - src.data.data_loader - WARNING - Data file not found for date 2014-06-12: data/glbx-mdp3-20140612.ohlcv-1m.csv
+2025-06-04 22:24:44,574 - src.data.data_loader - WARNING - Data file not found for date 2014-06-13: data/glbx-mdp3-20140613.ohlcv-1m.csv
+2025-06-04 22:24:44,976 - src.data.data_loader - WARNING - Data file not found for date 2014-08-24: data/glbx-mdp3-20140824.ohlcv-1m.csv
+2025-06-04 22:24:45,159 - src.data.data_loader - WARNING - Data file not found for date 2014-09-23: data/glbx-mdp3-20140923.ohlcv-1m.csv
+2025-06-04 22:24:45,159 - src.data.data_loader - WARNING - Data file not found for date 2014-09-24: data/glbx-mdp3-20140924.ohlcv-1m.csv
+2025-06-04 22:24:45,159 - src.data.data_loader - WARNING - Data file not found for date 2014-09-25: data/glbx-mdp3-20140925.ohlcv-1m.csv
+2025-06-04 22:24:45,716 - src.data.data_loader - WARNING - Data file not found for date 2014-12-31: data/glbx-mdp3-20141231.ohlcv-1m.csv
+2025-06-04 22:24:47,714 - src.data.data_loader - WARNING - Data file not found for date 2015-12-25: data/glbx-mdp3-20151225.ohlcv-1m.csv
+2025-06-04 22:24:47,744 - src.data.data_loader - WARNING - Data file not found for date 2016-01-01: data/glbx-mdp3-20160101.ohlcv-1m.csv
+2025-06-04 22:24:48,218 - src.data.data_loader - WARNING - Data file not found for date 2016-03-25: data/glbx-mdp3-20160325.ohlcv-1m.csv
+2025-06-04 22:24:49,833 - src.data.data_loader - WARNING - Data file not found for date 2016-12-25: data/glbx-mdp3-20161225.ohlcv-1m.csv
+2025-06-04 22:24:49,864 - src.data.data_loader - WARNING - Data file not found for date 2017-01-01: data/glbx-mdp3-20170101.ohlcv-1m.csv
+2025-06-04 22:24:50,433 - src.data.data_loader - WARNING - Data file not found for date 2017-04-14: data/glbx-mdp3-20170414.ohlcv-1m.csv
+2025-06-04 22:24:51,946 - src.data.data_loader - WARNING - Data file not found for date 2017-12-24: data/glbx-mdp3-20171224.ohlcv-1m.csv
+2025-06-04 22:24:51,977 - src.data.data_loader - WARNING - Data file not found for date 2017-12-31: data/glbx-mdp3-20171231.ohlcv-1m.csv
+2025-06-04 22:24:52,512 - src.data.data_loader - WARNING - Data file not found for date 2018-03-30: data/glbx-mdp3-20180330.ohlcv-1m.csv
+2025-06-04 22:24:54,860 - src.data.data_loader - WARNING - Data file not found for date 2019-04-19: data/glbx-mdp3-20190419.ohlcv-1m.csv
+2025-06-04 22:24:56,968 - src.data.data_loader - WARNING - Data file not found for date 2020-04-10: data/glbx-mdp3-20200410.ohlcv-1m.csv
+2025-06-04 22:24:58,521 - src.data.data_loader - WARNING - Data file not found for date 2020-12-25: data/glbx-mdp3-20201225.ohlcv-1m.csv
+2025-06-04 22:24:58,553 - src.data.data_loader - WARNING - Data file not found for date 2021-01-01: data/glbx-mdp3-20210101.ohlcv-1m.csv
+2025-06-04 22:25:00,755 - src.data.data_loader - WARNING - Data file not found for date 2021-12-24: data/glbx-mdp3-20211224.ohlcv-1m.csv
+2025-06-04 22:25:01,544 - src.data.data_loader - WARNING - Data file not found for date 2022-04-15: data/glbx-mdp3-20220415.ohlcv-1m.csv
+2025-06-04 22:25:03,113 - src.data.data_loader - WARNING - Data file not found for date 2022-12-25: data/glbx-mdp3-20221225.ohlcv-1m.csv
+2025-06-04 22:25:03,146 - src.data.data_loader - WARNING - Data file not found for date 2023-01-01: data/glbx-mdp3-20230101.ohlcv-1m.csv
+2025-06-04 22:25:05,409 - src.data.data_loader - WARNING - Data file not found for date 2023-12-24: data/glbx-mdp3-20231224.ohlcv-1m.csv
+2025-06-04 22:25:05,441 - src.data.data_loader - WARNING - Data file not found for date 2023-12-31: data/glbx-mdp3-20231231.ohlcv-1m.csv
+2025-06-04 22:25:05,995 - src.data.data_loader - WARNING - Data file not found for date 2024-03-29: data/glbx-mdp3-20240329.ohlcv-1m.csv
+2025-06-04 22:25:08,094 - src.data.data_loader - INFO - Removed 1 invalid rows from 2025-02-14 data (0.1%)
+2025-06-04 22:25:08,502 - src.data.data_loader - WARNING - Data file not found for date 2025-04-18: data/glbx-mdp3-20250418.ohlcv-1m.csv
+2025-06-04 22:25:08,931 - src.data.data_loader - INFO - Loaded 5045077 total records
+2025-06-04 22:25:09,163 - src.data.data_loader - INFO - Resampled from 5045077 1-min bars to 1047312 5-min bars
+2025-06-04 22:25:09,164 - __main__ - INFO - Starting FAST feature engineering pipeline (cloud optimized)
+2025-06-04 22:25:09,274 - src.data.feature_engineering - INFO - Calculated VWAP features for all timeframes
+2025-06-04 22:25:09,458 - src.data.feature_engineering - INFO - Calculated price action features
+2025-06-04 22:25:09,648 - src.data.feature_engineering - INFO - Calculated session features
+2025-06-04 22:26:35,261 - src.data.feature_engineering - INFO - Calculated target labels for 2:1 RR trades
+2025-06-04 22:26:36,516 - src.data.feature_engineering - INFO - Normalized features for ML model input
+2025-06-04 22:26:36,878 - __main__ - INFO - Checking column data types before conversion...
+2025-06-04 22:26:36,884 - __main__ - INFO - Column session_type: dtype=int64, sample values=[0 1 2 3]
+2025-06-04 22:26:37,063 - __main__ - INFO - After conversion - session_type: dtype=object, sample values=['0' '1' '2' '3']
+2025-06-04 22:26:37,066 - __main__ - INFO - Column day_of_week: dtype=int32, sample values=[0 1 2 3 4]
+2025-06-04 22:26:37,246 - __main__ - INFO - After conversion - day_of_week: dtype=object, sample values=['0' '1' '2' '3' '4']
+2025-06-04 22:26:37,248 - __main__ - INFO - Column hour: dtype=int32, sample values=[2 3 4 5 6]
+2025-06-04 22:26:37,422 - __main__ - INFO - After conversion - hour: dtype=object, sample values=['2' '3' '4' '5' '6']
+2025-06-04 22:26:37,424 - __main__ - INFO - Column is_asia_session: dtype=bool, sample values=[False  True]
+2025-06-04 22:26:37,566 - __main__ - INFO - After conversion - is_asia_session: dtype=object, sample values=['False' 'True']
+2025-06-04 22:26:37,568 - __main__ - INFO - Boolean column is_weekend: dtype=bool, sample values=[False  True]
+2025-06-04 22:26:37,712 - __main__ - INFO - After conversion - is_weekend: dtype=object, sample values=['False' 'True']
+2025-06-04 22:26:37,712 - __main__ - INFO - All categorical columns final check:
+2025-06-04 22:26:37,713 - __main__ - INFO - session_type: object
+2025-06-04 22:26:37,713 - __main__ - INFO - day_of_week: object
+2025-06-04 22:26:37,713 - __main__ - INFO - hour: object
+2025-06-04 22:26:37,713 - __main__ - INFO - is_asia_session: object
+2025-06-04 22:26:37,713 - __main__ - INFO - is_weekend: object
+2025-06-04 22:26:37,713 - __main__ - INFO - FAST feature engineering finished. Final dataset shape: (1047177, 106)
+2025-06-04 22:26:39,355 - src.data.data_loader - INFO - Saved processed data to data/processed/processed_nasdaq_cloud_unknown_20250604_222637.parquet
+2025-06-04 22:26:39,363 - __main__ - INFO - === Cloud TFT Training ===
+2025-06-04 22:26:39,363 - __main__ - INFO - Starting cloud-optimized TFT training
+2025-06-04 22:26:39,363 - __main__ - INFO - === PRE-TFT CATEGORICAL VALIDATION ===
+2025-06-04 22:26:39,380 - __main__ - INFO - PRE-TFT session_type: dtype=object, unique_values=['0', '1', '2', '3']
+2025-06-04 22:26:39,420 - __main__ - INFO - POST-FORCE session_type: dtype=category, unique_values=['0', '1', '2', '3']
+2025-06-04 22:26:39,435 - __main__ - INFO - PRE-TFT day_of_week: dtype=object, unique_values=['0', '1', '2', '3', '4', '6']
+2025-06-04 22:26:39,470 - __main__ - INFO - POST-FORCE day_of_week: dtype=category, unique_values=['0', '1', '2', '3', '4', '6']
+2025-06-04 22:26:39,484 - __main__ - INFO - PRE-TFT hour: dtype=object, unique_values=['0', '1', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '2', '20', '21', '22', '23', '3', '4', '5', '6', '7', '8', '9']
+2025-06-04 22:26:39,518 - __main__ - INFO - POST-FORCE hour: dtype=category, unique_values=['0', '1', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '2', '20', '21', '22', '23', '3', '4', '5', '6', '7', '8', '9']
+2025-06-04 22:26:39,539 - __main__ - INFO - PRE-TFT is_asia_session: dtype=object, unique_values=['False', 'True']
+2025-06-04 22:26:39,574 - __main__ - INFO - POST-FORCE is_asia_session: dtype=category, unique_values=['False', 'True']
+2025-06-04 22:26:39,596 - __main__ - INFO - PRE-TFT is_weekend: dtype=object, unique_values=['False', 'True']
+2025-06-04 22:26:39,633 - __main__ - INFO - POST-FORCE is_weekend: dtype=category, unique_values=['False', 'True']
+2025-06-04 22:26:39,633 - __main__ - INFO - === TFT CATEGORICAL VALIDATION COMPLETE ===
+2025-06-04 22:26:39,640 - src.models.tft_model - INFO - Preparing data for TFT training
+2025-06-04 22:26:40,674 - src.models.tft_model - INFO - Using target variable: future_return_1 (dtype: float64)
+2025-06-04 22:26:47,853 - src.models.tft_model - INFO - Created TFT dataset with 1047176 training samples
+2025-06-04 22:26:47,882 - src.models.tft_model - INFO - Creating TFT model
+2025-06-04 22:26:47,920 - src.models.tft_model - INFO - Created TFT model with 1304640 parameters
+2025-06-04 22:26:47,920 - src.models.tft_model - INFO - Starting TFT training
+2025-06-04 22:26:47,993 - __main__ - ERROR - Cloud training failed: Neither `tensorboard` nor `tensorboardX` is available. Try `pip install`ing either.
+Requirement 'tensorboardX' not met. HINT: Try running `pip install -U 'tensorboardX'`
+Requirement 'tensorboard' not met. HINT: Try running `pip install -U 'tensorboard'`
+2025-06-04 22:27:37,418 - __main__ - INFO - Initializing CloudTrainer for unknown
+2025-06-04 22:27:37,425 - __main__ - INFO - CUDA not available, using CPU
+2025-06-04 22:27:37,431 - __main__ - INFO - CloudTrainer initialization completed for unknown
+2025-06-04 22:27:37,431 - __main__ - INFO - Starting cloud training pipeline on unknown
+2025-06-04 22:27:37,535 - __main__ - INFO - === Cloud Data Preparation ===
+2025-06-04 22:27:37,535 - __main__ - INFO - Loading data for unknown environment
+2025-06-04 22:27:37,536 - src.data.data_loader - INFO - Loading data for 4675 dates from 2010-06-06 to 2025-05-28
+2025-06-04 22:27:38,759 - src.data.data_loader - WARNING - Data file not found for date 2010-12-24: data/glbx-mdp3-20101224.ohlcv-1m.csv
+2025-06-04 22:27:39,414 - src.data.data_loader - WARNING - Data file not found for date 2011-04-22: data/glbx-mdp3-20110422.ohlcv-1m.csv
+2025-06-04 22:27:40,814 - src.data.data_loader - WARNING - Data file not found for date 2011-12-25: data/glbx-mdp3-20111225.ohlcv-1m.csv
+2025-06-04 22:27:40,814 - src.data.data_loader - WARNING - Data file not found for date 2011-12-26: data/glbx-mdp3-20111226.ohlcv-1m.csv
+2025-06-04 22:27:40,839 - src.data.data_loader - WARNING - Data file not found for date 2012-01-01: data/glbx-mdp3-20120101.ohlcv-1m.csv
+2025-06-04 22:27:40,839 - src.data.data_loader - WARNING - Data file not found for date 2012-01-02: data/glbx-mdp3-20120102.ohlcv-1m.csv
+2025-06-04 22:27:42,831 - src.data.data_loader - WARNING - Data file not found for date 2012-12-25: data/glbx-mdp3-20121225.ohlcv-1m.csv
+2025-06-04 22:27:42,860 - src.data.data_loader - WARNING - Data file not found for date 2013-01-01: data/glbx-mdp3-20130101.ohlcv-1m.csv
+2025-06-04 22:27:42,955 - src.data.data_loader - WARNING - Data file not found for date 2013-01-20: data/glbx-mdp3-20130120.ohlcv-1m.csv
+2025-06-04 22:27:43,101 - src.data.data_loader - WARNING - Data file not found for date 2013-02-17: data/glbx-mdp3-20130217.ohlcv-1m.csv
+2025-06-04 22:27:43,332 - src.data.data_loader - WARNING - Data file not found for date 2013-03-29: data/glbx-mdp3-20130329.ohlcv-1m.csv
+2025-06-04 22:27:43,632 - src.data.data_loader - WARNING - Data file not found for date 2013-05-26: data/glbx-mdp3-20130526.ohlcv-1m.csv
+2025-06-04 22:27:44,175 - src.data.data_loader - WARNING - Data file not found for date 2013-09-01: data/glbx-mdp3-20130901.ohlcv-1m.csv
+2025-06-04 22:27:44,907 - src.data.data_loader - WARNING - Data file not found for date 2013-12-25: data/glbx-mdp3-20131225.ohlcv-1m.csv
+2025-06-04 22:27:44,935 - src.data.data_loader - WARNING - Data file not found for date 2014-01-01: data/glbx-mdp3-20140101.ohlcv-1m.csv
+2025-06-04 22:27:45,020 - src.data.data_loader - WARNING - Data file not found for date 2014-01-19: data/glbx-mdp3-20140119.ohlcv-1m.csv
+2025-06-04 22:27:45,170 - src.data.data_loader - WARNING - Data file not found for date 2014-02-16: data/glbx-mdp3-20140216.ohlcv-1m.csv
+2025-06-04 22:27:45,520 - src.data.data_loader - WARNING - Data file not found for date 2014-04-18: data/glbx-mdp3-20140418.ohlcv-1m.csv
+2025-06-04 22:27:45,819 - src.data.data_loader - WARNING - Data file not found for date 2014-06-12: data/glbx-mdp3-20140612.ohlcv-1m.csv
+2025-06-04 22:27:45,819 - src.data.data_loader - WARNING - Data file not found for date 2014-06-13: data/glbx-mdp3-20140613.ohlcv-1m.csv
+2025-06-04 22:27:46,227 - src.data.data_loader - WARNING - Data file not found for date 2014-08-24: data/glbx-mdp3-20140824.ohlcv-1m.csv
+2025-06-04 22:27:46,413 - src.data.data_loader - WARNING - Data file not found for date 2014-09-23: data/glbx-mdp3-20140923.ohlcv-1m.csv
+2025-06-04 22:27:46,413 - src.data.data_loader - WARNING - Data file not found for date 2014-09-24: data/glbx-mdp3-20140924.ohlcv-1m.csv
+2025-06-04 22:27:46,413 - src.data.data_loader - WARNING - Data file not found for date 2014-09-25: data/glbx-mdp3-20140925.ohlcv-1m.csv
+2025-06-04 22:27:46,989 - src.data.data_loader - WARNING - Data file not found for date 2014-12-31: data/glbx-mdp3-20141231.ohlcv-1m.csv
+2025-06-04 22:27:49,064 - src.data.data_loader - WARNING - Data file not found for date 2015-12-25: data/glbx-mdp3-20151225.ohlcv-1m.csv
+2025-06-04 22:27:49,095 - src.data.data_loader - WARNING - Data file not found for date 2016-01-01: data/glbx-mdp3-20160101.ohlcv-1m.csv
+2025-06-04 22:27:49,596 - src.data.data_loader - WARNING - Data file not found for date 2016-03-25: data/glbx-mdp3-20160325.ohlcv-1m.csv
+2025-06-04 22:27:51,301 - src.data.data_loader - WARNING - Data file not found for date 2016-12-25: data/glbx-mdp3-20161225.ohlcv-1m.csv
+2025-06-04 22:27:51,333 - src.data.data_loader - WARNING - Data file not found for date 2017-01-01: data/glbx-mdp3-20170101.ohlcv-1m.csv
+2025-06-04 22:27:51,932 - src.data.data_loader - WARNING - Data file not found for date 2017-04-14: data/glbx-mdp3-20170414.ohlcv-1m.csv
+2025-06-04 22:27:53,479 - src.data.data_loader - WARNING - Data file not found for date 2017-12-24: data/glbx-mdp3-20171224.ohlcv-1m.csv
+2025-06-04 22:27:53,512 - src.data.data_loader - WARNING - Data file not found for date 2017-12-31: data/glbx-mdp3-20171231.ohlcv-1m.csv
+2025-06-04 22:27:54,073 - src.data.data_loader - WARNING - Data file not found for date 2018-03-30: data/glbx-mdp3-20180330.ohlcv-1m.csv
+2025-06-04 22:27:56,490 - src.data.data_loader - WARNING - Data file not found for date 2019-04-19: data/glbx-mdp3-20190419.ohlcv-1m.csv
+2025-06-04 22:27:58,670 - src.data.data_loader - WARNING - Data file not found for date 2020-04-10: data/glbx-mdp3-20200410.ohlcv-1m.csv
+2025-06-04 22:28:00,296 - src.data.data_loader - WARNING - Data file not found for date 2020-12-25: data/glbx-mdp3-20201225.ohlcv-1m.csv
+2025-06-04 22:28:00,331 - src.data.data_loader - WARNING - Data file not found for date 2021-01-01: data/glbx-mdp3-20210101.ohlcv-1m.csv
+2025-06-04 22:28:02,785 - src.data.data_loader - WARNING - Data file not found for date 2021-12-24: data/glbx-mdp3-20211224.ohlcv-1m.csv
+2025-06-04 22:28:03,532 - src.data.data_loader - WARNING - Data file not found for date 2022-04-15: data/glbx-mdp3-20220415.ohlcv-1m.csv
+2025-06-04 22:28:05,181 - src.data.data_loader - WARNING - Data file not found for date 2022-12-25: data/glbx-mdp3-20221225.ohlcv-1m.csv
+2025-06-04 22:28:05,216 - src.data.data_loader - WARNING - Data file not found for date 2023-01-01: data/glbx-mdp3-20230101.ohlcv-1m.csv
+2025-06-04 22:28:07,672 - src.data.data_loader - WARNING - Data file not found for date 2023-12-24: data/glbx-mdp3-20231224.ohlcv-1m.csv
+2025-06-04 22:28:07,707 - src.data.data_loader - WARNING - Data file not found for date 2023-12-31: data/glbx-mdp3-20231231.ohlcv-1m.csv
+2025-06-04 22:28:08,322 - src.data.data_loader - WARNING - Data file not found for date 2024-03-29: data/glbx-mdp3-20240329.ohlcv-1m.csv
+2025-06-04 22:28:10,537 - src.data.data_loader - INFO - Removed 1 invalid rows from 2025-02-14 data (0.1%)
+2025-06-04 22:28:10,962 - src.data.data_loader - WARNING - Data file not found for date 2025-04-18: data/glbx-mdp3-20250418.ohlcv-1m.csv
+2025-06-04 22:28:11,379 - src.data.data_loader - INFO - Loaded 5045077 total records
+2025-06-04 22:28:11,620 - src.data.data_loader - INFO - Resampled from 5045077 1-min bars to 1047312 5-min bars
+2025-06-04 22:28:11,620 - __main__ - INFO - Starting FAST feature engineering pipeline (cloud optimized)
+2025-06-04 22:28:11,728 - src.data.feature_engineering - INFO - Calculated VWAP features for all timeframes
+2025-06-04 22:28:11,897 - src.data.feature_engineering - INFO - Calculated price action features
+2025-06-04 22:28:12,067 - src.data.feature_engineering - INFO - Calculated session features
+2025-06-04 22:29:39,095 - src.data.feature_engineering - INFO - Calculated target labels for 2:1 RR trades
+2025-06-04 22:29:40,288 - src.data.feature_engineering - INFO - Normalized features for ML model input
+2025-06-04 22:29:40,610 - __main__ - INFO - Checking column data types before conversion...
+2025-06-04 22:29:40,613 - __main__ - INFO - Column session_type: dtype=int64, sample values=[0 1 2 3]
+2025-06-04 22:29:40,784 - __main__ - INFO - After conversion - session_type: dtype=object, sample values=['0' '1' '2' '3']
+2025-06-04 22:29:40,786 - __main__ - INFO - Column day_of_week: dtype=int32, sample values=[0 1 2 3 4]
+2025-06-04 22:29:40,961 - __main__ - INFO - After conversion - day_of_week: dtype=object, sample values=['0' '1' '2' '3' '4']
+2025-06-04 22:29:40,963 - __main__ - INFO - Column hour: dtype=int32, sample values=[2 3 4 5 6]
+2025-06-04 22:29:41,140 - __main__ - INFO - After conversion - hour: dtype=object, sample values=['2' '3' '4' '5' '6']
+2025-06-04 22:29:41,142 - __main__ - INFO - Column is_asia_session: dtype=bool, sample values=[False  True]
+2025-06-04 22:29:41,287 - __main__ - INFO - After conversion - is_asia_session: dtype=object, sample values=['False' 'True']
+2025-06-04 22:29:41,289 - __main__ - INFO - Boolean column is_weekend: dtype=bool, sample values=[False  True]
+2025-06-04 22:29:41,431 - __main__ - INFO - After conversion - is_weekend: dtype=object, sample values=['False' 'True']
+2025-06-04 22:29:41,431 - __main__ - INFO - All categorical columns final check:
+2025-06-04 22:29:41,431 - __main__ - INFO - session_type: object
+2025-06-04 22:29:41,431 - __main__ - INFO - day_of_week: object
+2025-06-04 22:29:41,431 - __main__ - INFO - hour: object
+2025-06-04 22:29:41,431 - __main__ - INFO - is_asia_session: object
+2025-06-04 22:29:41,431 - __main__ - INFO - is_weekend: object
+2025-06-04 22:29:41,431 - __main__ - INFO - FAST feature engineering finished. Final dataset shape: (1047177, 106)
+2025-06-04 22:29:42,796 - src.data.data_loader - INFO - Saved processed data to data/processed/processed_nasdaq_cloud_unknown_20250604_222941.parquet
+2025-06-04 22:29:42,801 - __main__ - INFO - === Cloud TFT Training ===
+2025-06-04 22:29:42,801 - __main__ - INFO - Starting cloud-optimized TFT training
+2025-06-04 22:29:42,801 - __main__ - INFO - === PRE-TFT CATEGORICAL VALIDATION ===
+2025-06-04 22:29:42,816 - __main__ - INFO - PRE-TFT session_type: dtype=object, unique_values=['0', '1', '2', '3']
+2025-06-04 22:29:42,858 - __main__ - INFO - POST-FORCE session_type: dtype=category, unique_values=['0', '1', '2', '3']
+2025-06-04 22:29:42,874 - __main__ - INFO - PRE-TFT day_of_week: dtype=object, unique_values=['0', '1', '2', '3', '4', '6']
+2025-06-04 22:29:42,909 - __main__ - INFO - POST-FORCE day_of_week: dtype=category, unique_values=['0', '1', '2', '3', '4', '6']
+2025-06-04 22:29:42,923 - __main__ - INFO - PRE-TFT hour: dtype=object, unique_values=['0', '1', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '2', '20', '21', '22', '23', '3', '4', '5', '6', '7', '8', '9']
+2025-06-04 22:29:42,961 - __main__ - INFO - POST-FORCE hour: dtype=category, unique_values=['0', '1', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '2', '20', '21', '22', '23', '3', '4', '5', '6', '7', '8', '9']
+2025-06-04 22:29:42,980 - __main__ - INFO - PRE-TFT is_asia_session: dtype=object, unique_values=['False', 'True']
+2025-06-04 22:29:43,018 - __main__ - INFO - POST-FORCE is_asia_session: dtype=category, unique_values=['False', 'True']
+2025-06-04 22:29:43,036 - __main__ - INFO - PRE-TFT is_weekend: dtype=object, unique_values=['False', 'True']
+2025-06-04 22:29:43,073 - __main__ - INFO - POST-FORCE is_weekend: dtype=category, unique_values=['False', 'True']
+2025-06-04 22:29:43,073 - __main__ - INFO - === TFT CATEGORICAL VALIDATION COMPLETE ===
+2025-06-04 22:29:43,078 - src.models.tft_model - INFO - Preparing data for TFT training
+2025-06-04 22:29:43,780 - src.models.tft_model - INFO - Using target variable: future_return_1 (dtype: float64)
+2025-06-04 22:29:51,292 - src.models.tft_model - INFO - Created TFT dataset with 1047176 training samples
+2025-06-04 22:29:51,327 - src.models.tft_model - INFO - Creating TFT model
+2025-06-04 22:29:51,368 - src.models.tft_model - INFO - Created TFT model with 1304640 parameters
+2025-06-04 22:29:51,368 - src.models.tft_model - INFO - Starting TFT training
+2025-06-04 22:29:51,534 - pytorch_lightning.utilities.rank_zero - INFO - Using default `ModelCheckpoint`. Consider installing `litmodels` package to enable `LitModelCheckpoint` for automatic upload to the Lightning model registry.
+2025-06-04 22:29:51,550 - pytorch_lightning.utilities.rank_zero - INFO - GPU available: True (mps), used: True
+2025-06-04 22:29:51,550 - pytorch_lightning.utilities.rank_zero - INFO - TPU available: False, using: 0 TPU cores
+2025-06-04 22:29:51,550 - pytorch_lightning.utilities.rank_zero - INFO - HPU available: False, using: 0 HPUs
+2025-06-04 22:29:51,553 - __main__ - ERROR - Cloud training failed: `model` must be a `LightningModule` or `torch._dynamo.OptimizedModule`, got `TemporalFusionTransformer`
+2025-06-04 22:33:54,132 - __main__ - INFO - Initializing CloudTrainer for unknown
+2025-06-04 22:33:54,139 - __main__ - INFO - CUDA not available, using CPU
+2025-06-04 22:33:54,148 - __main__ - INFO - CloudTrainer initialization completed for unknown
+2025-06-04 22:33:54,148 - __main__ - INFO - Starting cloud training pipeline on unknown
+2025-06-04 22:33:54,283 - __main__ - INFO - === Cloud Data Preparation ===
+2025-06-04 22:33:54,283 - __main__ - INFO - Loading data for unknown environment with smart caching
+2025-06-04 22:33:54,287 - __main__ - ERROR - Cloud training failed: 'DataConfig' object has no attribute 'PROCESSED_DIR'
+2025-06-04 22:35:19,002 - __main__ - INFO - Initializing CloudTrainer for unknown
+2025-06-04 22:35:19,008 - __main__ - INFO - CUDA not available, using CPU
+2025-06-04 22:35:19,015 - __main__ - INFO - CloudTrainer initialization completed for unknown
+2025-06-04 22:35:19,016 - __main__ - INFO - Starting cloud training pipeline on unknown
+2025-06-04 22:35:19,114 - __main__ - INFO - === Cloud Data Preparation ===
+2025-06-04 22:35:19,115 - __main__ - INFO - Loading data for unknown environment with smart caching
+2025-06-04 22:35:19,115 - src.data.data_cache - INFO - === Smart Data Loading with Cache ===
+2025-06-04 22:35:19,116 - src.data.data_loader - INFO - Loading data for 4675 dates from 2010-06-06 to 2025-05-28
+2025-06-04 22:35:20,344 - src.data.data_loader - WARNING - Data file not found for date 2010-12-24: data/glbx-mdp3-20101224.ohlcv-1m.csv
+2025-06-04 22:35:20,981 - src.data.data_loader - WARNING - Data file not found for date 2011-04-22: data/glbx-mdp3-20110422.ohlcv-1m.csv
+2025-06-04 22:35:22,353 - src.data.data_loader - WARNING - Data file not found for date 2011-12-25: data/glbx-mdp3-20111225.ohlcv-1m.csv
+2025-06-04 22:35:22,353 - src.data.data_loader - WARNING - Data file not found for date 2011-12-26: data/glbx-mdp3-20111226.ohlcv-1m.csv
+2025-06-04 22:35:22,378 - src.data.data_loader - WARNING - Data file not found for date 2012-01-01: data/glbx-mdp3-20120101.ohlcv-1m.csv
+2025-06-04 22:35:22,378 - src.data.data_loader - WARNING - Data file not found for date 2012-01-02: data/glbx-mdp3-20120102.ohlcv-1m.csv
+2025-06-04 22:35:24,328 - src.data.data_loader - WARNING - Data file not found for date 2012-12-25: data/glbx-mdp3-20121225.ohlcv-1m.csv
+2025-06-04 22:35:24,356 - src.data.data_loader - WARNING - Data file not found for date 2013-01-01: data/glbx-mdp3-20130101.ohlcv-1m.csv
+2025-06-04 22:35:24,449 - src.data.data_loader - WARNING - Data file not found for date 2013-01-20: data/glbx-mdp3-20130120.ohlcv-1m.csv
+2025-06-04 22:35:24,591 - src.data.data_loader - WARNING - Data file not found for date 2013-02-17: data/glbx-mdp3-20130217.ohlcv-1m.csv
+2025-06-04 22:35:24,815 - src.data.data_loader - WARNING - Data file not found for date 2013-03-29: data/glbx-mdp3-20130329.ohlcv-1m.csv
+2025-06-04 22:35:25,110 - src.data.data_loader - WARNING - Data file not found for date 2013-05-26: data/glbx-mdp3-20130526.ohlcv-1m.csv
+2025-06-04 22:35:25,642 - src.data.data_loader - WARNING - Data file not found for date 2013-09-01: data/glbx-mdp3-20130901.ohlcv-1m.csv
+2025-06-04 22:35:26,358 - src.data.data_loader - WARNING - Data file not found for date 2013-12-25: data/glbx-mdp3-20131225.ohlcv-1m.csv
+2025-06-04 22:35:26,385 - src.data.data_loader - WARNING - Data file not found for date 2014-01-01: data/glbx-mdp3-20140101.ohlcv-1m.csv
+2025-06-04 22:35:26,469 - src.data.data_loader - WARNING - Data file not found for date 2014-01-19: data/glbx-mdp3-20140119.ohlcv-1m.csv
+2025-06-04 22:35:26,615 - src.data.data_loader - WARNING - Data file not found for date 2014-02-16: data/glbx-mdp3-20140216.ohlcv-1m.csv
+2025-06-04 22:35:26,958 - src.data.data_loader - WARNING - Data file not found for date 2014-04-18: data/glbx-mdp3-20140418.ohlcv-1m.csv
+2025-06-04 22:35:27,248 - src.data.data_loader - WARNING - Data file not found for date 2014-06-12: data/glbx-mdp3-20140612.ohlcv-1m.csv
+2025-06-04 22:35:27,248 - src.data.data_loader - WARNING - Data file not found for date 2014-06-13: data/glbx-mdp3-20140613.ohlcv-1m.csv
+2025-06-04 22:35:27,641 - src.data.data_loader - WARNING - Data file not found for date 2014-08-24: data/glbx-mdp3-20140824.ohlcv-1m.csv
+2025-06-04 22:35:27,819 - src.data.data_loader - WARNING - Data file not found for date 2014-09-23: data/glbx-mdp3-20140923.ohlcv-1m.csv
+2025-06-04 22:35:27,820 - src.data.data_loader - WARNING - Data file not found for date 2014-09-24: data/glbx-mdp3-20140924.ohlcv-1m.csv
+2025-06-04 22:35:27,820 - src.data.data_loader - WARNING - Data file not found for date 2014-09-25: data/glbx-mdp3-20140925.ohlcv-1m.csv
+2025-06-04 22:35:28,359 - src.data.data_loader - WARNING - Data file not found for date 2014-12-31: data/glbx-mdp3-20141231.ohlcv-1m.csv
+2025-06-04 22:35:30,612 - src.data.data_loader - WARNING - Data file not found for date 2015-12-25: data/glbx-mdp3-20151225.ohlcv-1m.csv
+2025-06-04 22:35:30,643 - src.data.data_loader - WARNING - Data file not found for date 2016-01-01: data/glbx-mdp3-20160101.ohlcv-1m.csv
+2025-06-04 22:35:31,154 - src.data.data_loader - WARNING - Data file not found for date 2016-03-25: data/glbx-mdp3-20160325.ohlcv-1m.csv
+2025-06-04 22:35:32,828 - src.data.data_loader - WARNING - Data file not found for date 2016-12-25: data/glbx-mdp3-20161225.ohlcv-1m.csv
+2025-06-04 22:35:32,859 - src.data.data_loader - WARNING - Data file not found for date 2017-01-01: data/glbx-mdp3-20170101.ohlcv-1m.csv
+2025-06-04 22:35:33,442 - src.data.data_loader - WARNING - Data file not found for date 2017-04-14: data/glbx-mdp3-20170414.ohlcv-1m.csv
+2025-06-04 22:35:35,012 - src.data.data_loader - WARNING - Data file not found for date 2017-12-24: data/glbx-mdp3-20171224.ohlcv-1m.csv
+2025-06-04 22:35:35,043 - src.data.data_loader - WARNING - Data file not found for date 2017-12-31: data/glbx-mdp3-20171231.ohlcv-1m.csv
+2025-06-04 22:35:35,604 - src.data.data_loader - WARNING - Data file not found for date 2018-03-30: data/glbx-mdp3-20180330.ohlcv-1m.csv
+2025-06-04 22:35:38,058 - src.data.data_loader - WARNING - Data file not found for date 2019-04-19: data/glbx-mdp3-20190419.ohlcv-1m.csv
+2025-06-04 22:35:40,225 - src.data.data_loader - WARNING - Data file not found for date 2020-04-10: data/glbx-mdp3-20200410.ohlcv-1m.csv
+2025-06-04 22:35:41,830 - src.data.data_loader - WARNING - Data file not found for date 2020-12-25: data/glbx-mdp3-20201225.ohlcv-1m.csv
+2025-06-04 22:35:41,868 - src.data.data_loader - WARNING - Data file not found for date 2021-01-01: data/glbx-mdp3-20210101.ohlcv-1m.csv
+2025-06-04 22:35:44,324 - src.data.data_loader - WARNING - Data file not found for date 2021-12-24: data/glbx-mdp3-20211224.ohlcv-1m.csv
+2025-06-04 22:35:45,068 - src.data.data_loader - WARNING - Data file not found for date 2022-04-15: data/glbx-mdp3-20220415.ohlcv-1m.csv
+2025-06-04 22:35:46,759 - src.data.data_loader - WARNING - Data file not found for date 2022-12-25: data/glbx-mdp3-20221225.ohlcv-1m.csv
+2025-06-04 22:35:46,794 - src.data.data_loader - WARNING - Data file not found for date 2023-01-01: data/glbx-mdp3-20230101.ohlcv-1m.csv
+2025-06-04 22:35:49,099 - src.data.data_loader - WARNING - Data file not found for date 2023-12-24: data/glbx-mdp3-20231224.ohlcv-1m.csv
+2025-06-04 22:35:49,135 - src.data.data_loader - WARNING - Data file not found for date 2023-12-31: data/glbx-mdp3-20231231.ohlcv-1m.csv
+2025-06-04 22:35:49,762 - src.data.data_loader - WARNING - Data file not found for date 2024-03-29: data/glbx-mdp3-20240329.ohlcv-1m.csv
+2025-06-04 22:35:51,975 - src.data.data_loader - INFO - Removed 1 invalid rows from 2025-02-14 data (0.1%)
+2025-06-04 22:35:52,433 - src.data.data_loader - WARNING - Data file not found for date 2025-04-18: data/glbx-mdp3-20250418.ohlcv-1m.csv
+2025-06-04 22:35:52,873 - src.data.data_loader - INFO - Loaded 5045077 total records
+2025-06-04 22:35:52,895 - src.data.data_cache - INFO - 🔄 Processing data fresh (no cache found or forced refresh)
+2025-06-04 22:35:53,121 - src.data.data_loader - INFO - Resampled from 5045077 1-min bars to 1047312 5-min bars
+2025-06-04 22:35:53,121 - __main__ - ERROR - Cloud training failed: 'FeatureEngineer' object has no attribute 'create_full_feature_set'
+2025-06-04 22:38:03,140 - __main__ - INFO - Initializing CloudTrainer for unknown
+2025-06-04 22:38:03,147 - __main__ - INFO - CUDA not available, using CPU
+2025-06-04 22:38:03,154 - __main__ - INFO - CloudTrainer initialization completed for unknown
+2025-06-04 22:38:03,154 - __main__ - INFO - Starting cloud training pipeline on unknown
+2025-06-04 22:38:03,257 - __main__ - INFO - === Cloud Data Preparation ===
+2025-06-04 22:38:03,258 - __main__ - INFO - Loading data for unknown environment with smart caching
+2025-06-04 22:38:03,261 - src.data.data_cache - INFO - === Smart Data Loading with Cache ===
+2025-06-04 22:38:03,261 - src.data.data_loader - INFO - Loading data for 4675 dates from 2010-06-06 to 2025-05-28
+2025-06-04 22:38:04,506 - src.data.data_loader - WARNING - Data file not found for date 2010-12-24: data/glbx-mdp3-20101224.ohlcv-1m.csv
+2025-06-04 22:38:05,159 - src.data.data_loader - WARNING - Data file not found for date 2011-04-22: data/glbx-mdp3-20110422.ohlcv-1m.csv
+2025-06-04 22:38:06,566 - src.data.data_loader - WARNING - Data file not found for date 2011-12-25: data/glbx-mdp3-20111225.ohlcv-1m.csv
+2025-06-04 22:38:06,566 - src.data.data_loader - WARNING - Data file not found for date 2011-12-26: data/glbx-mdp3-20111226.ohlcv-1m.csv
+2025-06-04 22:38:06,591 - src.data.data_loader - WARNING - Data file not found for date 2012-01-01: data/glbx-mdp3-20120101.ohlcv-1m.csv
+2025-06-04 22:38:06,591 - src.data.data_loader - WARNING - Data file not found for date 2012-01-02: data/glbx-mdp3-20120102.ohlcv-1m.csv
+2025-06-04 22:38:08,618 - src.data.data_loader - WARNING - Data file not found for date 2012-12-25: data/glbx-mdp3-20121225.ohlcv-1m.csv
+2025-06-04 22:38:08,648 - src.data.data_loader - WARNING - Data file not found for date 2013-01-01: data/glbx-mdp3-20130101.ohlcv-1m.csv
+2025-06-04 22:38:08,744 - src.data.data_loader - WARNING - Data file not found for date 2013-01-20: data/glbx-mdp3-20130120.ohlcv-1m.csv
+2025-06-04 22:38:08,889 - src.data.data_loader - WARNING - Data file not found for date 2013-02-17: data/glbx-mdp3-20130217.ohlcv-1m.csv
+2025-06-04 22:38:09,120 - src.data.data_loader - WARNING - Data file not found for date 2013-03-29: data/glbx-mdp3-20130329.ohlcv-1m.csv
+2025-06-04 22:38:09,424 - src.data.data_loader - WARNING - Data file not found for date 2013-05-26: data/glbx-mdp3-20130526.ohlcv-1m.csv
+2025-06-04 22:38:09,972 - src.data.data_loader - WARNING - Data file not found for date 2013-09-01: data/glbx-mdp3-20130901.ohlcv-1m.csv
+2025-06-04 22:38:10,712 - src.data.data_loader - WARNING - Data file not found for date 2013-12-25: data/glbx-mdp3-20131225.ohlcv-1m.csv
+2025-06-04 22:38:10,739 - src.data.data_loader - WARNING - Data file not found for date 2014-01-01: data/glbx-mdp3-20140101.ohlcv-1m.csv
+2025-06-04 22:38:10,827 - src.data.data_loader - WARNING - Data file not found for date 2014-01-19: data/glbx-mdp3-20140119.ohlcv-1m.csv
+2025-06-04 22:38:10,977 - src.data.data_loader - WARNING - Data file not found for date 2014-02-16: data/glbx-mdp3-20140216.ohlcv-1m.csv
+2025-06-04 22:38:11,324 - src.data.data_loader - WARNING - Data file not found for date 2014-04-18: data/glbx-mdp3-20140418.ohlcv-1m.csv
+2025-06-04 22:38:11,616 - src.data.data_loader - WARNING - Data file not found for date 2014-06-12: data/glbx-mdp3-20140612.ohlcv-1m.csv
+2025-06-04 22:38:11,616 - src.data.data_loader - WARNING - Data file not found for date 2014-06-13: data/glbx-mdp3-20140613.ohlcv-1m.csv
+2025-06-04 22:38:12,011 - src.data.data_loader - WARNING - Data file not found for date 2014-08-24: data/glbx-mdp3-20140824.ohlcv-1m.csv
+2025-06-04 22:38:12,193 - src.data.data_loader - WARNING - Data file not found for date 2014-09-23: data/glbx-mdp3-20140923.ohlcv-1m.csv
+2025-06-04 22:38:12,193 - src.data.data_loader - WARNING - Data file not found for date 2014-09-24: data/glbx-mdp3-20140924.ohlcv-1m.csv
+2025-06-04 22:38:12,193 - src.data.data_loader - WARNING - Data file not found for date 2014-09-25: data/glbx-mdp3-20140925.ohlcv-1m.csv
+2025-06-04 22:38:12,738 - src.data.data_loader - WARNING - Data file not found for date 2014-12-31: data/glbx-mdp3-20141231.ohlcv-1m.csv
+2025-06-04 22:38:14,734 - src.data.data_loader - WARNING - Data file not found for date 2015-12-25: data/glbx-mdp3-20151225.ohlcv-1m.csv
+2025-06-04 22:38:14,764 - src.data.data_loader - WARNING - Data file not found for date 2016-01-01: data/glbx-mdp3-20160101.ohlcv-1m.csv
+2025-06-04 22:38:15,240 - src.data.data_loader - WARNING - Data file not found for date 2016-03-25: data/glbx-mdp3-20160325.ohlcv-1m.csv
+2025-06-04 22:38:16,853 - src.data.data_loader - WARNING - Data file not found for date 2016-12-25: data/glbx-mdp3-20161225.ohlcv-1m.csv
+2025-06-04 22:38:16,884 - src.data.data_loader - WARNING - Data file not found for date 2017-01-01: data/glbx-mdp3-20170101.ohlcv-1m.csv
+2025-06-04 22:38:17,466 - src.data.data_loader - WARNING - Data file not found for date 2017-04-14: data/glbx-mdp3-20170414.ohlcv-1m.csv
+2025-06-04 22:38:19,029 - src.data.data_loader - WARNING - Data file not found for date 2017-12-24: data/glbx-mdp3-20171224.ohlcv-1m.csv
+2025-06-04 22:38:19,060 - src.data.data_loader - WARNING - Data file not found for date 2017-12-31: data/glbx-mdp3-20171231.ohlcv-1m.csv
+2025-06-04 22:38:19,647 - src.data.data_loader - WARNING - Data file not found for date 2018-03-30: data/glbx-mdp3-20180330.ohlcv-1m.csv
+2025-06-04 22:38:22,108 - src.data.data_loader - WARNING - Data file not found for date 2019-04-19: data/glbx-mdp3-20190419.ohlcv-1m.csv
+2025-06-04 22:38:24,357 - src.data.data_loader - WARNING - Data file not found for date 2020-04-10: data/glbx-mdp3-20200410.ohlcv-1m.csv
+2025-06-04 22:38:26,030 - src.data.data_loader - WARNING - Data file not found for date 2020-12-25: data/glbx-mdp3-20201225.ohlcv-1m.csv
+2025-06-04 22:38:26,063 - src.data.data_loader - WARNING - Data file not found for date 2021-01-01: data/glbx-mdp3-20210101.ohlcv-1m.csv
+2025-06-04 22:38:28,448 - src.data.data_loader - WARNING - Data file not found for date 2021-12-24: data/glbx-mdp3-20211224.ohlcv-1m.csv
+2025-06-04 22:38:29,230 - src.data.data_loader - WARNING - Data file not found for date 2022-04-15: data/glbx-mdp3-20220415.ohlcv-1m.csv
+2025-06-04 22:38:30,937 - src.data.data_loader - WARNING - Data file not found for date 2022-12-25: data/glbx-mdp3-20221225.ohlcv-1m.csv
+2025-06-04 22:38:30,971 - src.data.data_loader - WARNING - Data file not found for date 2023-01-01: data/glbx-mdp3-20230101.ohlcv-1m.csv
+2025-06-04 22:38:33,233 - src.data.data_loader - WARNING - Data file not found for date 2023-12-24: data/glbx-mdp3-20231224.ohlcv-1m.csv
+2025-06-04 22:38:33,267 - src.data.data_loader - WARNING - Data file not found for date 2023-12-31: data/glbx-mdp3-20231231.ohlcv-1m.csv
+2025-06-04 22:38:33,873 - src.data.data_loader - WARNING - Data file not found for date 2024-03-29: data/glbx-mdp3-20240329.ohlcv-1m.csv
+2025-06-04 22:38:36,054 - src.data.data_loader - INFO - Removed 1 invalid rows from 2025-02-14 data (0.1%)
+2025-06-04 22:38:36,468 - src.data.data_loader - WARNING - Data file not found for date 2025-04-18: data/glbx-mdp3-20250418.ohlcv-1m.csv
+2025-06-04 22:38:36,878 - src.data.data_loader - INFO - Loaded 5045077 total records
+2025-06-04 22:38:36,896 - src.data.data_cache - INFO - 🔄 Processing data fresh (no cache found or forced refresh)
+2025-06-04 22:38:37,123 - src.data.data_loader - INFO - Resampled from 5045077 1-min bars to 1047312 5-min bars
+2025-06-04 22:38:37,123 - src.data.feature_engineering - INFO - Starting complete feature engineering pipeline
+2025-06-04 22:38:37,235 - src.data.feature_engineering - INFO - Calculated VWAP features for all timeframes
+2025-06-04 22:48:24,427 - __main__ - INFO - Initializing CloudTrainer for unknown
+2025-06-04 22:48:24,434 - __main__ - INFO - CUDA not available, using CPU
+2025-06-04 22:48:24,441 - __main__ - INFO - CloudTrainer initialization completed for unknown
+2025-06-04 22:48:24,441 - __main__ - INFO - Starting cloud training pipeline on unknown
+2025-06-04 22:48:24,548 - __main__ - INFO - === Cloud Data Preparation ===
+2025-06-04 22:48:24,548 - __main__ - INFO - Loading data for unknown environment with smart caching
+2025-06-04 22:48:24,549 - src.data.data_cache - INFO - === Smart Data Loading with Cache ===
+2025-06-04 22:48:24,550 - src.data.data_loader - INFO - Loading data for 4675 dates from 2010-06-06 to 2025-05-28
+2025-06-04 22:48:25,781 - src.data.data_loader - WARNING - Data file not found for date 2010-12-24: data/glbx-mdp3-20101224.ohlcv-1m.csv
+2025-06-04 22:48:26,438 - src.data.data_loader - WARNING - Data file not found for date 2011-04-22: data/glbx-mdp3-20110422.ohlcv-1m.csv
+2025-06-04 22:48:27,871 - src.data.data_loader - WARNING - Data file not found for date 2011-12-25: data/glbx-mdp3-20111225.ohlcv-1m.csv
+2025-06-04 22:48:27,871 - src.data.data_loader - WARNING - Data file not found for date 2011-12-26: data/glbx-mdp3-20111226.ohlcv-1m.csv
+2025-06-04 22:48:27,897 - src.data.data_loader - WARNING - Data file not found for date 2012-01-01: data/glbx-mdp3-20120101.ohlcv-1m.csv
+2025-06-04 22:48:27,897 - src.data.data_loader - WARNING - Data file not found for date 2012-01-02: data/glbx-mdp3-20120102.ohlcv-1m.csv
+2025-06-04 22:48:29,909 - src.data.data_loader - WARNING - Data file not found for date 2012-12-25: data/glbx-mdp3-20121225.ohlcv-1m.csv
+2025-06-04 22:48:29,938 - src.data.data_loader - WARNING - Data file not found for date 2013-01-01: data/glbx-mdp3-20130101.ohlcv-1m.csv
+2025-06-04 22:48:30,034 - src.data.data_loader - WARNING - Data file not found for date 2013-01-20: data/glbx-mdp3-20130120.ohlcv-1m.csv
+2025-06-04 22:48:30,182 - src.data.data_loader - WARNING - Data file not found for date 2013-02-17: data/glbx-mdp3-20130217.ohlcv-1m.csv
+2025-06-04 22:48:30,412 - src.data.data_loader - WARNING - Data file not found for date 2013-03-29: data/glbx-mdp3-20130329.ohlcv-1m.csv
+2025-06-04 22:48:30,719 - src.data.data_loader - WARNING - Data file not found for date 2013-05-26: data/glbx-mdp3-20130526.ohlcv-1m.csv
+2025-06-04 22:48:31,285 - src.data.data_loader - WARNING - Data file not found for date 2013-09-01: data/glbx-mdp3-20130901.ohlcv-1m.csv
+2025-06-04 22:48:32,057 - src.data.data_loader - WARNING - Data file not found for date 2013-12-25: data/glbx-mdp3-20131225.ohlcv-1m.csv
+2025-06-04 22:48:32,085 - src.data.data_loader - WARNING - Data file not found for date 2014-01-01: data/glbx-mdp3-20140101.ohlcv-1m.csv
+2025-06-04 22:48:32,176 - src.data.data_loader - WARNING - Data file not found for date 2014-01-19: data/glbx-mdp3-20140119.ohlcv-1m.csv
+2025-06-04 22:48:32,329 - src.data.data_loader - WARNING - Data file not found for date 2014-02-16: data/glbx-mdp3-20140216.ohlcv-1m.csv
+2025-06-04 22:48:32,694 - src.data.data_loader - WARNING - Data file not found for date 2014-04-18: data/glbx-mdp3-20140418.ohlcv-1m.csv
+2025-06-04 22:48:33,060 - src.data.data_loader - WARNING - Data file not found for date 2014-06-12: data/glbx-mdp3-20140612.ohlcv-1m.csv
+2025-06-04 22:48:33,060 - src.data.data_loader - WARNING - Data file not found for date 2014-06-13: data/glbx-mdp3-20140613.ohlcv-1m.csv
+2025-06-04 22:48:33,497 - src.data.data_loader - WARNING - Data file not found for date 2014-08-24: data/glbx-mdp3-20140824.ohlcv-1m.csv
+2025-06-04 22:48:33,694 - src.data.data_loader - WARNING - Data file not found for date 2014-09-23: data/glbx-mdp3-20140923.ohlcv-1m.csv
+2025-06-04 22:48:33,695 - src.data.data_loader - WARNING - Data file not found for date 2014-09-24: data/glbx-mdp3-20140924.ohlcv-1m.csv
+2025-06-04 22:48:33,695 - src.data.data_loader - WARNING - Data file not found for date 2014-09-25: data/glbx-mdp3-20140925.ohlcv-1m.csv
+2025-06-04 22:48:34,271 - src.data.data_loader - WARNING - Data file not found for date 2014-12-31: data/glbx-mdp3-20141231.ohlcv-1m.csv
+2025-06-04 22:48:36,374 - src.data.data_loader - WARNING - Data file not found for date 2015-12-25: data/glbx-mdp3-20151225.ohlcv-1m.csv
+2025-06-04 22:48:36,405 - src.data.data_loader - WARNING - Data file not found for date 2016-01-01: data/glbx-mdp3-20160101.ohlcv-1m.csv
+2025-06-04 22:48:36,898 - src.data.data_loader - WARNING - Data file not found for date 2016-03-25: data/glbx-mdp3-20160325.ohlcv-1m.csv
+2025-06-04 22:48:38,578 - src.data.data_loader - WARNING - Data file not found for date 2016-12-25: data/glbx-mdp3-20161225.ohlcv-1m.csv
+2025-06-04 22:48:38,610 - src.data.data_loader - WARNING - Data file not found for date 2017-01-01: data/glbx-mdp3-20170101.ohlcv-1m.csv
+2025-06-04 22:48:39,205 - src.data.data_loader - WARNING - Data file not found for date 2017-04-14: data/glbx-mdp3-20170414.ohlcv-1m.csv
+2025-06-04 22:48:40,771 - src.data.data_loader - WARNING - Data file not found for date 2017-12-24: data/glbx-mdp3-20171224.ohlcv-1m.csv
+2025-06-04 22:48:40,806 - src.data.data_loader - WARNING - Data file not found for date 2017-12-31: data/glbx-mdp3-20171231.ohlcv-1m.csv
+2025-06-04 22:48:41,446 - src.data.data_loader - WARNING - Data file not found for date 2018-03-30: data/glbx-mdp3-20180330.ohlcv-1m.csv
+2025-06-04 22:48:43,990 - src.data.data_loader - WARNING - Data file not found for date 2019-04-19: data/glbx-mdp3-20190419.ohlcv-1m.csv
+2025-06-04 22:48:46,181 - src.data.data_loader - WARNING - Data file not found for date 2020-04-10: data/glbx-mdp3-20200410.ohlcv-1m.csv
+2025-06-04 22:48:47,793 - src.data.data_loader - WARNING - Data file not found for date 2020-12-25: data/glbx-mdp3-20201225.ohlcv-1m.csv
+2025-06-04 22:48:47,829 - src.data.data_loader - WARNING - Data file not found for date 2021-01-01: data/glbx-mdp3-20210101.ohlcv-1m.csv
+2025-06-04 22:48:50,217 - src.data.data_loader - WARNING - Data file not found for date 2021-12-24: data/glbx-mdp3-20211224.ohlcv-1m.csv
+2025-06-04 22:48:50,938 - src.data.data_loader - WARNING - Data file not found for date 2022-04-15: data/glbx-mdp3-20220415.ohlcv-1m.csv
+2025-06-04 22:48:52,581 - src.data.data_loader - WARNING - Data file not found for date 2022-12-25: data/glbx-mdp3-20221225.ohlcv-1m.csv
+2025-06-04 22:48:52,616 - src.data.data_loader - WARNING - Data file not found for date 2023-01-01: data/glbx-mdp3-20230101.ohlcv-1m.csv
+2025-06-04 22:48:54,906 - src.data.data_loader - WARNING - Data file not found for date 2023-12-24: data/glbx-mdp3-20231224.ohlcv-1m.csv
+2025-06-04 22:48:54,940 - src.data.data_loader - WARNING - Data file not found for date 2023-12-31: data/glbx-mdp3-20231231.ohlcv-1m.csv
+2025-06-04 22:48:55,508 - src.data.data_loader - WARNING - Data file not found for date 2024-03-29: data/glbx-mdp3-20240329.ohlcv-1m.csv
+2025-06-04 22:48:57,691 - src.data.data_loader - INFO - Removed 1 invalid rows from 2025-02-14 data (0.1%)
+2025-06-04 22:48:58,171 - src.data.data_loader - WARNING - Data file not found for date 2025-04-18: data/glbx-mdp3-20250418.ohlcv-1m.csv
+2025-06-04 22:48:58,695 - src.data.data_loader - INFO - Loaded 5045077 total records
+2025-06-04 22:48:58,721 - src.data.data_cache - INFO - 🔄 Processing data fresh (no cache found or forced refresh)
+2025-06-04 22:48:58,975 - src.data.data_loader - INFO - Resampled from 5045077 1-min bars to 1047312 5-min bars
+2025-06-04 22:48:58,975 - src.data.feature_engineering - INFO - Starting complete feature engineering pipeline
+2025-06-04 22:48:59,115 - src.data.feature_engineering - INFO - Calculated VWAP features for all timeframes
+2025-06-04 23:01:57,201 - __main__ - INFO - Initializing CloudTrainer for unknown
+2025-06-04 23:01:57,202 - __main__ - INFO - 🔍 Verifying PyTorch Forecasting compatibility...
+2025-06-04 23:01:57,263 - __main__ - WARNING - ❌ PyTorch Forecasting compatibility issue detected
+2025-06-04 23:01:57,263 - __main__ - INFO - 🔧 Attempting automatic fix...
+2025-06-04 23:01:57,263 - __main__ - INFO - 📍 Found pytorch-forecasting at: /Users/onuricen/.pyenv/versions/3.11.0/lib/python3.11/site-packages/pytorch_forecasting
+2025-06-04 23:01:57,264 - __main__ - INFO - ✅ Fixed base_model.py
+2025-06-04 23:01:57,265 - __main__ - INFO - ✅ Fixed _utils.py
+2025-06-04 23:01:57,265 - __main__ - INFO - ✅ Fixed tuning.py
+2025-06-04 23:01:57,265 - __main__ - INFO - 🎉 Fix completed! Modified 3 files.
+2025-06-04 23:01:57,272 - __main__ - ERROR - ❌ Fix may not have worked. TFT still not recognized as LightningModule
+2025-06-04 23:01:57,273 - __main__ - INFO - 💡 Try restarting the Python process or use: pip install pytorch-forecasting==1.0.0
+2025-06-04 23:01:57,273 - __main__ - WARNING - ⚠️ PyTorch Forecasting compatibility issues detected but could not be auto-fixed
+2025-06-04 23:01:57,273 - __main__ - INFO - 💡 You may need to manually run: pip install pytorch-forecasting==1.0.0
+2025-06-04 23:01:57,275 - __main__ - INFO - CUDA not available, using CPU
+2025-06-04 23:01:57,279 - __main__ - INFO - CloudTrainer initialization completed for unknown
+2025-06-04 23:01:57,279 - __main__ - INFO - Starting cloud training pipeline on unknown
+2025-06-04 23:01:57,374 - __main__ - INFO - === Cloud Data Preparation ===
+2025-06-04 23:01:57,374 - __main__ - INFO - Loading data for unknown environment with smart caching
+2025-06-04 23:01:57,375 - src.data.data_cache - INFO - === Smart Data Loading with Cache ===
+2025-06-04 23:01:57,376 - src.data.data_loader - INFO - Loading data for 4675 dates from 2010-06-06 to 2025-05-28
+2025-06-04 23:01:58,615 - src.data.data_loader - WARNING - Data file not found for date 2010-12-24: data/glbx-mdp3-20101224.ohlcv-1m.csv
+2025-06-04 23:01:59,262 - src.data.data_loader - WARNING - Data file not found for date 2011-04-22: data/glbx-mdp3-20110422.ohlcv-1m.csv
+2025-06-04 23:02:00,694 - src.data.data_loader - WARNING - Data file not found for date 2011-12-25: data/glbx-mdp3-20111225.ohlcv-1m.csv
+2025-06-04 23:02:00,694 - src.data.data_loader - WARNING - Data file not found for date 2011-12-26: data/glbx-mdp3-20111226.ohlcv-1m.csv
+2025-06-04 23:02:00,720 - src.data.data_loader - WARNING - Data file not found for date 2012-01-01: data/glbx-mdp3-20120101.ohlcv-1m.csv
+2025-06-04 23:02:00,720 - src.data.data_loader - WARNING - Data file not found for date 2012-01-02: data/glbx-mdp3-20120102.ohlcv-1m.csv
+2025-06-04 23:02:02,711 - src.data.data_loader - WARNING - Data file not found for date 2012-12-25: data/glbx-mdp3-20121225.ohlcv-1m.csv
+2025-06-04 23:02:02,740 - src.data.data_loader - WARNING - Data file not found for date 2013-01-01: data/glbx-mdp3-20130101.ohlcv-1m.csv
+2025-06-04 23:02:02,835 - src.data.data_loader - WARNING - Data file not found for date 2013-01-20: data/glbx-mdp3-20130120.ohlcv-1m.csv
+2025-06-04 23:02:02,978 - src.data.data_loader - WARNING - Data file not found for date 2013-02-17: data/glbx-mdp3-20130217.ohlcv-1m.csv
+2025-06-04 23:02:03,204 - src.data.data_loader - WARNING - Data file not found for date 2013-03-29: data/glbx-mdp3-20130329.ohlcv-1m.csv
+2025-06-04 23:02:03,509 - src.data.data_loader - WARNING - Data file not found for date 2013-05-26: data/glbx-mdp3-20130526.ohlcv-1m.csv
+2025-06-04 23:02:04,130 - src.data.data_loader - WARNING - Data file not found for date 2013-09-01: data/glbx-mdp3-20130901.ohlcv-1m.csv
+2025-06-04 23:02:04,792 - src.data.data_loader - WARNING - Data file not found for date 2013-12-25: data/glbx-mdp3-20131225.ohlcv-1m.csv
+2025-06-04 23:02:04,820 - src.data.data_loader - WARNING - Data file not found for date 2014-01-01: data/glbx-mdp3-20140101.ohlcv-1m.csv
+2025-06-04 23:02:04,909 - src.data.data_loader - WARNING - Data file not found for date 2014-01-19: data/glbx-mdp3-20140119.ohlcv-1m.csv
+2025-06-04 23:02:05,061 - src.data.data_loader - WARNING - Data file not found for date 2014-02-16: data/glbx-mdp3-20140216.ohlcv-1m.csv
+2025-06-04 23:02:05,413 - src.data.data_loader - WARNING - Data file not found for date 2014-04-18: data/glbx-mdp3-20140418.ohlcv-1m.csv
+2025-06-04 23:02:05,707 - src.data.data_loader - WARNING - Data file not found for date 2014-06-12: data/glbx-mdp3-20140612.ohlcv-1m.csv
+2025-06-04 23:02:05,707 - src.data.data_loader - WARNING - Data file not found for date 2014-06-13: data/glbx-mdp3-20140613.ohlcv-1m.csv
+2025-06-04 23:02:06,113 - src.data.data_loader - WARNING - Data file not found for date 2014-08-24: data/glbx-mdp3-20140824.ohlcv-1m.csv
+2025-06-04 23:02:06,296 - src.data.data_loader - WARNING - Data file not found for date 2014-09-23: data/glbx-mdp3-20140923.ohlcv-1m.csv
+2025-06-04 23:02:06,297 - src.data.data_loader - WARNING - Data file not found for date 2014-09-24: data/glbx-mdp3-20140924.ohlcv-1m.csv
+2025-06-04 23:02:06,297 - src.data.data_loader - WARNING - Data file not found for date 2014-09-25: data/glbx-mdp3-20140925.ohlcv-1m.csv
+2025-06-04 23:02:06,841 - src.data.data_loader - WARNING - Data file not found for date 2014-12-31: data/glbx-mdp3-20141231.ohlcv-1m.csv
+2025-06-04 23:02:08,880 - src.data.data_loader - WARNING - Data file not found for date 2015-12-25: data/glbx-mdp3-20151225.ohlcv-1m.csv
+2025-06-04 23:02:08,911 - src.data.data_loader - WARNING - Data file not found for date 2016-01-01: data/glbx-mdp3-20160101.ohlcv-1m.csv
+2025-06-04 23:02:09,403 - src.data.data_loader - WARNING - Data file not found for date 2016-03-25: data/glbx-mdp3-20160325.ohlcv-1m.csv
+2025-06-04 23:02:11,079 - src.data.data_loader - WARNING - Data file not found for date 2016-12-25: data/glbx-mdp3-20161225.ohlcv-1m.csv
+2025-06-04 23:02:11,110 - src.data.data_loader - WARNING - Data file not found for date 2017-01-01: data/glbx-mdp3-20170101.ohlcv-1m.csv
+2025-06-04 23:02:11,696 - src.data.data_loader - WARNING - Data file not found for date 2017-04-14: data/glbx-mdp3-20170414.ohlcv-1m.csv
+2025-06-04 23:02:13,252 - src.data.data_loader - WARNING - Data file not found for date 2017-12-24: data/glbx-mdp3-20171224.ohlcv-1m.csv
+2025-06-04 23:02:13,285 - src.data.data_loader - WARNING - Data file not found for date 2017-12-31: data/glbx-mdp3-20171231.ohlcv-1m.csv
+2025-06-04 23:02:13,839 - src.data.data_loader - WARNING - Data file not found for date 2018-03-30: data/glbx-mdp3-20180330.ohlcv-1m.csv
+2025-06-04 23:02:16,272 - src.data.data_loader - WARNING - Data file not found for date 2019-04-19: data/glbx-mdp3-20190419.ohlcv-1m.csv
+2025-06-04 23:02:18,409 - src.data.data_loader - WARNING - Data file not found for date 2020-04-10: data/glbx-mdp3-20200410.ohlcv-1m.csv
+2025-06-04 23:02:20,046 - src.data.data_loader - WARNING - Data file not found for date 2020-12-25: data/glbx-mdp3-20201225.ohlcv-1m.csv
+2025-06-04 23:02:20,079 - src.data.data_loader - WARNING - Data file not found for date 2021-01-01: data/glbx-mdp3-20210101.ohlcv-1m.csv
+2025-06-04 23:02:22,539 - src.data.data_loader - WARNING - Data file not found for date 2021-12-24: data/glbx-mdp3-20211224.ohlcv-1m.csv
+2025-06-04 23:02:23,262 - src.data.data_loader - WARNING - Data file not found for date 2022-04-15: data/glbx-mdp3-20220415.ohlcv-1m.csv
+2025-06-04 23:02:24,866 - src.data.data_loader - WARNING - Data file not found for date 2022-12-25: data/glbx-mdp3-20221225.ohlcv-1m.csv
+2025-06-04 23:02:24,900 - src.data.data_loader - WARNING - Data file not found for date 2023-01-01: data/glbx-mdp3-20230101.ohlcv-1m.csv
+2025-06-04 23:02:27,156 - src.data.data_loader - WARNING - Data file not found for date 2023-12-24: data/glbx-mdp3-20231224.ohlcv-1m.csv
+2025-06-04 23:02:27,189 - src.data.data_loader - WARNING - Data file not found for date 2023-12-31: data/glbx-mdp3-20231231.ohlcv-1m.csv
+2025-06-04 23:02:27,755 - src.data.data_loader - WARNING - Data file not found for date 2024-03-29: data/glbx-mdp3-20240329.ohlcv-1m.csv
+2025-06-04 23:02:29,915 - src.data.data_loader - INFO - Removed 1 invalid rows from 2025-02-14 data (0.1%)
+2025-06-04 23:02:30,351 - src.data.data_loader - WARNING - Data file not found for date 2025-04-18: data/glbx-mdp3-20250418.ohlcv-1m.csv
+2025-06-04 23:02:30,772 - src.data.data_loader - INFO - Loaded 5045077 total records
+2025-06-04 23:02:30,792 - src.data.data_cache - INFO - 🔄 Processing data fresh (no cache found or forced refresh)
+2025-06-04 23:02:31,046 - src.data.data_loader - INFO - Resampled from 5045077 1-min bars to 1047312 5-min bars
+2025-06-04 23:02:31,046 - src.data.feature_engineering - INFO - Starting complete feature engineering pipeline
+2025-06-04 23:02:31,179 - src.data.feature_engineering - INFO - Calculated VWAP features for all timeframes

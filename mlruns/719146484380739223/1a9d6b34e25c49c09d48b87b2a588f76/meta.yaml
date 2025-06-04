@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/onuricen/Documents/Projects/Kuant/mlruns/719146484380739223/1a9d6b34e25c49c09d48b87b2a588f76/artifacts
+end_time: 1749068991552
+entry_point_name: ''
+experiment_id: '719146484380739223'
+lifecycle_stage: active
+run_id: 1a9d6b34e25c49c09d48b87b2a588f76
+run_name: TFT_Cloud_unknown
+run_uuid: 1a9d6b34e25c49c09d48b87b2a588f76
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1749068983074
+status: 4
+tags: []
+user_id: onuricen

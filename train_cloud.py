@@ -18,6 +18,7 @@ import warnings
 import torch
 import psutil
 import platform
+import joblib
 warnings.filterwarnings('ignore')
 
 # Add src to path
@@ -232,6 +233,12 @@ class CloudTrainer:
         self.logger = setup_cloud_logging(cloud_env)
         self.logger.info(f"Initializing CloudTrainer for {cloud_env}")
         
+        # Verify and fix pytorch-forecasting compatibility early
+        self.logger.info("🔍 Verifying PyTorch Forecasting compatibility...")
+        if not verify_and_fix_pytorch_forecasting():
+            self.logger.warning("⚠️ PyTorch Forecasting compatibility issues detected but could not be auto-fixed")
+            self.logger.info("💡 You may need to manually run: pip install pytorch-forecasting==1.0.0")
+        
         # Initialize components
         self.data_loader = NasdaqFuturesDataLoader()
         self.feature_engineer = FeatureEngineer()
@@ -338,12 +345,12 @@ class CloudTrainer:
         if workspace_path.exists():
             self.logger.info("Found /workspace directory - using for persistent storage")
             # Update config paths to use workspace
-            config.data.PROCESSED_DIR = workspace_path / 'data' / 'processed'
+            config.data.PROCESSED_DATA_DIR = workspace_path / 'data' / 'processed'
             config.data.MODEL_DIR = workspace_path / 'models'
             config.data.LOGS_DIR = workspace_path / 'logs'
             
             # Create directories if they don't exist
-            config.data.PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
+            config.data.PROCESSED_DATA_DIR.mkdir(parents=True, exist_ok=True)
             config.data.MODEL_DIR.mkdir(parents=True, exist_ok=True)
             config.data.LOGS_DIR.mkdir(parents=True, exist_ok=True)
         
@@ -369,13 +376,28 @@ class CloudTrainer:
             # Could enable data parallel training here
     
     def load_and_prepare_data(self, start_date: str = None, end_date: str = None) -> pd.DataFrame:
-        """Load and prepare data with cloud optimizations"""
-        self.logger.info(f"Loading data for {self.cloud_env} environment")
+        """Load and prepare data with cloud optimizations and smart caching"""
+        self.logger.info(f"Loading data for {self.cloud_env} environment with smart caching")
+        
+        # Import smart data loader
+        from src.data.data_cache import SmartDataLoader
+        
+        # Create smart data loader with caching
+        smart_loader = SmartDataLoader(
+            base_data_loader=self.data_loader,
+            cache_dir=config.data.PROCESSED_DATA_DIR / "cache"
+        )
+        
+        # Prepare feature parameters for cache key
+        feature_params = {
+            'cloud_env': self.cloud_env,
+            'batch_size': config.tft.BATCH_SIZE,
+            'data_limit_months': self.cloud_config.get('data_limit_months'),
+            'fast_features': True  # Using FastFeatureEngineer
+        }
         
         # Apply data limits for time-constrained environments
-        if start_date and end_date:
-            raw_data = self.data_loader.load_data_range(start_date, end_date)
-        else:
+        if not start_date or not end_date:
             available_dates = self.data_loader.get_available_dates()
             
             # Limit data size for time-constrained environments
@@ -386,18 +408,45 @@ class CloudTrainer:
                     start_date = dates_to_use[0]
                     end_date = dates_to_use[-1]
                     self.logger.info(f"Limiting data to {limit} months: {start_date} to {end_date}")
-                    raw_data = self.data_loader.load_data_range(start_date, end_date)
-                else:
-                    raw_data = self.data_loader.load_all_data()
+        
+        # Load with smart caching
+        cache_result = smart_loader.load_and_process_with_cache(
+            start_date=start_date,
+            end_date=end_date,
+            feature_params=feature_params,
+            force_refresh=getattr(self, 'force_refresh', False)  # Use force_refresh flag if set
+        )
+        
+        if 'processed_data' in cache_result:
+            self.processed_data = cache_result['processed_data']
+            
+            # Store cache key for TFT dataset caching
+            if 'cache_key' in cache_result:
+                self.processed_data_cache_key = cache_result['cache_key']
+            
+            # Log cache efficiency
+            if 'feature_metadata' in cache_result:
+                meta = cache_result['feature_metadata']
+                self.logger.info(f"✅ Using processed data: {meta['total_features']} features, {meta['data_range']['total_rows']} rows")
+                
+                if 'processing_time' in meta:
+                    self.logger.info(f"📅 Data processed at: {meta['processing_time']}")
+                    
+        else:
+            # Fallback to original method if caching fails
+            self.logger.warning("Smart caching failed, using fallback method")
+            
+            if start_date and end_date:
+                raw_data = self.data_loader.load_data_range(start_date, end_date)
             else:
                 raw_data = self.data_loader.load_all_data()
-        
-        # Resample and engineer features
-        resampled_data = self.data_loader.resample_to_5min(raw_data)
-        
-        # Use fast feature engineering for cloud environments
-        fast_fe = FastFeatureEngineer()
-        self.processed_data = fast_fe.create_fast_feature_set(resampled_data)
+            
+            # Resample and engineer features
+            resampled_data = self.data_loader.resample_to_5min(raw_data)
+            
+            # Use fast feature engineering for cloud environments
+            fast_fe = FastFeatureEngineer()
+            self.processed_data = fast_fe.create_fast_feature_set(resampled_data)
         
         # Cloud storage optimization
         self.save_cloud_data()
@@ -419,8 +468,8 @@ class CloudTrainer:
             self.logger.info(f"Data saved to Google Drive: {cloud_path}")
     
     def train_tft_cloud(self, data: pd.DataFrame) -> TradingTFT:
-        """Train TFT with cloud optimizations"""
-        self.logger.info("Starting cloud-optimized TFT training")
+        """Train TFT with cloud optimizations and dataset caching"""
+        self.logger.info("Starting cloud-optimized TFT training with caching")
         
         # CRITICAL: Validate and force categorical columns before TFT training
         self.logger.info("=== PRE-TFT CATEGORICAL VALIDATION ===")
@@ -454,9 +503,45 @@ class CloudTrainer:
                 "max_epochs": config.tft.MAX_EPOCHS
             })
             
+            # Check for cached TFT datasets
+            tft_cache_key = None
+            cached_datasets = None
+            
+            # Try to load cached TFT datasets if we have a cache key from data loading
+            if hasattr(self, 'processed_data_cache_key'):
+                from src.data.data_cache import DataCache
+                cache = DataCache(config.data.PROCESSED_DATA_DIR / "cache")
+                
+                try:
+                    cached_data = cache.load_processed_data(self.processed_data_cache_key)
+                    if 'tft_datasets' in cached_data:
+                        cached_datasets = cached_data['tft_datasets']
+                        self.logger.info("📦 Found cached TFT datasets")
+                except Exception as e:
+                    self.logger.warning(f"Could not load cached TFT datasets: {e}")
+            
             # Initialize and train TFT
             self.tft_model = TradingTFT()
-            training_dataset, validation_dataset = self.tft_model.prepare_data(data)
+            
+            if cached_datasets:
+                # Use cached datasets
+                self.logger.info("✅ Using cached TFT datasets")
+                training_dataset, validation_dataset = cached_datasets
+            else:
+                # Create new datasets and cache them
+                self.logger.info("🔄 Creating new TFT datasets")
+                training_dataset, validation_dataset = self.tft_model.prepare_data(data)
+                
+                # Cache the datasets for future use
+                if hasattr(self, 'processed_data_cache_key'):
+                    try:
+                        cache = DataCache(config.data.PROCESSED_DATA_DIR / "cache")
+                        cache_paths = cache._get_cache_paths(self.processed_data_cache_key)
+                        joblib.dump((training_dataset, validation_dataset), cache_paths['tft_datasets'])
+                        self.logger.info("💾 Cached TFT datasets for future use")
+                    except Exception as e:
+                        self.logger.warning(f"Could not cache TFT datasets: {e}")
+            
             model = self.tft_model.create_model(training_dataset)
             
             # Train with cloud optimizations
@@ -614,14 +699,167 @@ class CloudTrainer:
                 mlflow.log_metrics({"cloud_training_successful": 0})
                 raise
 
+def verify_and_fix_pytorch_forecasting():
+    """Verify pytorch-forecasting compatibility and auto-fix if needed"""
+    logger = logging.getLogger(__name__)
+    
+    try:
+        # Test if TFT is properly recognized as LightningModule
+        import pytorch_lightning as pl
+        from pytorch_forecasting import TemporalFusionTransformer
+        
+        is_lightning_module = issubclass(TemporalFusionTransformer, pl.LightningModule)
+        
+        if is_lightning_module:
+            logger.info("✅ PyTorch Forecasting compatibility verified")
+            return True
+        
+        logger.warning("❌ PyTorch Forecasting compatibility issue detected")
+        logger.info("🔧 Attempting automatic fix...")
+        
+        # Apply the fix
+        return apply_pytorch_forecasting_fix()
+        
+    except Exception as e:
+        logger.error(f"❌ Error checking PyTorch Forecasting compatibility: {e}")
+        logger.info("🔧 Attempting automatic fix anyway...")
+        return apply_pytorch_forecasting_fix()
+
+def apply_pytorch_forecasting_fix():
+    """Apply the pytorch-forecasting import fix"""
+    logger = logging.getLogger(__name__)
+    
+    try:
+        import pytorch_forecasting
+        from pathlib import Path
+        
+        # Find pytorch-forecasting installation path
+        pf_path = Path(pytorch_forecasting.__file__).parent
+        logger.info(f"📍 Found pytorch-forecasting at: {pf_path}")
+        
+        # Files that need fixing
+        files_to_fix = [
+            pf_path / "models" / "base_model.py",
+            pf_path / "utils" / "_utils.py", 
+            pf_path / "models" / "temporal_fusion_transformer" / "tuning.py"
+        ]
+        
+        fixed_count = 0
+        
+        for file_path in files_to_fix:
+            if file_path.exists():
+                try:
+                    # Read file
+                    with open(file_path, 'r') as f:
+                        content = f.read()
+                    
+                    # Replace problematic imports
+                    original_content = content
+                    content = content.replace('lightning.pytorch', 'pytorch_lightning')
+                    
+                    if content != original_content:
+                        # Create backup
+                        backup_path = str(file_path) + '.backup'
+                        with open(backup_path, 'w') as f:
+                            f.write(original_content)
+                        
+                        # Write fixed content
+                        with open(file_path, 'w') as f:
+                            f.write(content)
+                        
+                        logger.info(f"✅ Fixed {file_path.name}")
+                        fixed_count += 1
+                    
+                except Exception as e:
+                    logger.warning(f"⚠️ Could not fix {file_path}: {e}")
+            else:
+                logger.warning(f"⚠️ File not found: {file_path}")
+        
+        logger.info(f"🎉 Fix completed! Modified {fixed_count} files.")
+        
+        # Test the fix
+        try:
+            # Force reload the modules
+            import importlib
+            import pytorch_forecasting.models.base_model
+            import pytorch_forecasting.models.temporal_fusion_transformer
+            importlib.reload(pytorch_forecasting.models.base_model)
+            importlib.reload(pytorch_forecasting.models.temporal_fusion_transformer)
+            
+            # Test again
+            import pytorch_lightning as pl
+            from pytorch_forecasting import TemporalFusionTransformer
+            
+            is_lightning_module = issubclass(TemporalFusionTransformer, pl.LightningModule)
+            
+            if is_lightning_module:
+                logger.info("✅ Fix successful! TFT is now properly recognized as LightningModule")
+                return True
+            else:
+                logger.error("❌ Fix may not have worked. TFT still not recognized as LightningModule")
+                logger.info("💡 Try restarting the Python process or use: pip install pytorch-forecasting==1.0.0")
+                return False
+                
+        except Exception as e:
+            logger.error(f"❌ Error testing fix: {e}")
+            return False
+            
+    except Exception as e:
+        logger.error(f"❌ Failed to apply pytorch-forecasting fix: {e}")
+        return False
+
 def main():
     """Main cloud training script"""
     parser = argparse.ArgumentParser(description="Cloud Training for Hybrid Trading System")
     parser.add_argument("--start-date", type=str, help="Start date (YYYY-MM-DD)")
     parser.add_argument("--end-date", type=str, help="End date (YYYY-MM-DD)")
     parser.add_argument("--cloud-env", type=str, help="Force specific cloud environment")
+    parser.add_argument("--force-refresh", action="store_true", help="Force fresh data processing (ignore cache)")
+    parser.add_argument("--cache-info", action="store_true", help="Show cache information and exit")
+    parser.add_argument("--clear-cache", action="store_true", help="Clear all cache and exit")
+    parser.add_argument("--verify-pytorch-forecasting", action="store_true", help="Verify and fix PyTorch Forecasting compatibility")
     
     args = parser.parse_args()
+    
+    # PyTorch Forecasting verification command
+    if args.verify_pytorch_forecasting:
+        print("🔍 Verifying PyTorch Forecasting compatibility...")
+        if verify_and_fix_pytorch_forecasting():
+            print("✅ PyTorch Forecasting is working correctly!")
+        else:
+            print("❌ PyTorch Forecasting compatibility issues detected")
+            print("💡 Try manually running: pip install pytorch-forecasting==1.0.0")
+        return
+    
+    # Cache management commands
+    if args.cache_info or args.clear_cache:
+        from src.data.data_cache import DataCache
+        cache = DataCache()
+        
+        if args.cache_info:
+            info = cache.get_cache_info()
+            print("\n📦 Cache Information:")
+            print(f"   Total cached datasets: {info['total_cached_datasets']}")
+            print(f"   Total cache size: {info['total_size_mb']} MB")
+            
+            if info['datasets']:
+                print("\n   Cached datasets:")
+                for cache_key, details in info['datasets'].items():
+                    print(f"     🔑 {cache_key[:8]}...")
+                    print(f"        📅 Created: {details['created_at']}")
+                    print(f"        📊 Shape: {details['data_shape']}")
+                    print(f"        📈 Date range: {details['date_range']}")
+                    print(f"        💾 Size: {details['size_mb']} MB")
+                    print()
+            else:
+                print("   No cached data found")
+            return
+        
+        if args.clear_cache:
+            print("🗑️  Clearing all cache...")
+            cache.clear_cache()
+            print("✅ Cache cleared successfully")
+            return
     
     # Detect or use specified cloud environment
     cloud_env = args.cloud_env or detect_cloud_environment()
@@ -629,8 +867,15 @@ def main():
     print(f"🌩️  Detected cloud environment: {cloud_env.upper()}")
     print(f"🎯  Training configuration optimized for {cloud_env}")
     
+    if args.force_refresh:
+        print("🔄 Force refresh enabled - will ignore cache")
+    
     # Initialize cloud trainer
     trainer = CloudTrainer(cloud_env)
+    
+    # Set force refresh flag
+    if args.force_refresh:
+        trainer.force_refresh = True
     
     try:
         # Run cloud training
@@ -641,6 +886,12 @@ def main():
         print("\n📁 Models saved:")
         print(f"   TFT Model: models/tft_cloud_{cloud_env}.pt")
         print(f"   RL Model: models/rl_final_{cloud_env}.zip")
+        
+        # Show cache info after training
+        from src.data.data_cache import DataCache
+        cache = DataCache()
+        info = cache.get_cache_info()
+        print(f"\n💾 Cache: {info['total_cached_datasets']} datasets, {info['total_size_mb']:.1f} MB")
         
     except KeyboardInterrupt:
         print("\n⚠️  Training interrupted by user")

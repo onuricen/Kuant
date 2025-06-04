@@ -1,10 +1,10 @@
 # Runpod Setup Guide for Nasdaq Futures Trading System
 
-## Quick Start on Runpod A5000
+## Quick Start on Runpod A4500/A5000
 
 ### 1. Launch Runpod Instance
 
-1. **Choose GPU**: Select **RTX A5000** (24GB VRAM) for optimal performance
+1. **Choose GPU**: Select **RTX A4500** (20GB VRAM) or **RTX A5000** (24GB VRAM) for optimal performance
 2. **Container**: Use **RunPod PyTorch 2.4.0** template with CUDA 12.4
 3. **Storage**: Add **50-100GB** network volume mounted at `/workspace`
 4. **Ports**: Expose port **8888** for Jupyter Lab
@@ -24,58 +24,160 @@ cd kuant-trading
 # Install Runpod-optimized requirements
 pip install -r requirements_runpod.txt
 
-# If pytorch-forecasting fails, try the alternative installation:
-pip install git+https://github.com/sktime/pytorch-forecasting.git
+# 🔧 CRITICAL FIX: Fix pytorch-forecasting compatibility
+python fix_pytorch_forecasting.py
+
+# OR use the built-in verification in training script:
+python train_cloud.py --verify-pytorch-forecasting
+
+# If the above fails, manually install compatible version:
+# pip uninstall pytorch-forecasting -y
+# pip install pytorch-forecasting==1.0.0
+
+# Verify the fix worked
+python -c "
+import pytorch_lightning as pl
+from pytorch_forecasting import TemporalFusionTransformer
+print(f'TFT is LightningModule: {issubclass(TemporalFusionTransformer, pl.LightningModule)}')
+"
 ```
 
-### 3. Fix Common Issues
+Expected output should show: `TFT is LightningModule: True`
 
-If you encounter `ModuleNotFoundError: No module named 'pytorch_forecasting'`:
+### 3. Test Installation
 
 ```bash
-# Method 1: Install specific version
-pip install pytorch-forecasting==1.0.0 --no-deps
-pip install -r requirements_runpod.txt
-
-# Method 2: Install from source
-pip uninstall pytorch-forecasting -y
-pip install git+https://github.com/sktime/pytorch-forecasting.git
-
-# Method 3: Install with conda (if available)
-conda install pytorch-forecasting pytorch -c pytorch -c conda-forge
-```
-
-### 4. Verify Installation
-
-```python
+# Test basic imports
+python -c "
 import torch
-import pytorch_forecasting as ptf
-print(f"PyTorch: {torch.__version__}")
-print(f"CUDA Available: {torch.cuda.is_available()}")
-print(f"GPU: {torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'None'}")
-print(f"PyTorch Forecasting: {ptf.__version__}")
+import pytorch_forecasting
+import stable_baselines3
+print('✅ All packages imported successfully')
+print(f'GPU Available: {torch.cuda.is_available()}')
+print(f'GPU Name: {torch.cuda.get_device_name(0) if torch.cuda.is_available() else \"N/A\"}')
+"
 ```
 
-Expected output for A5000:
-```
-PyTorch: 2.4.0+cu124
-CUDA Available: True
-GPU: NVIDIA RTX A5000
-PyTorch Forecasting: 1.0.0 (or similar)
-```
-
-### 5. Run Training
+### 4. Check Cache and Start Training
 
 ```bash
-# Run cloud training (auto-detects Runpod)
+# Check if any cached data exists
+python train_cloud.py --cache-info
+
+# Start training (will cache data automatically)
 python train_cloud.py
 
-# Or specify dates
-python train_cloud.py --start-date 2023-01-01 --end-date 2024-01-01
-
-# Force Runpod environment (if detection fails)
-python train_cloud.py --cloud-env runpod
+# Or start with specific date range for faster initial testing
+python train_cloud.py --start-date 2024-01-01 --end-date 2024-06-01
 ```
+
+## 🔧 Troubleshooting
+
+### PyTorch Forecasting Import Issues
+
+If you get: `TypeError: 'model' must be a 'LightningModule'`
+
+**Solution 1 (Automatic Fix):**
+```bash
+python fix_pytorch_forecasting.py
+
+# OR use built-in verification:
+python train_cloud.py --verify-pytorch-forecasting
+```
+
+**Solution 2 (Manual Fix):**
+```bash
+# Find pytorch-forecasting installation
+python -c "import pytorch_forecasting; print(pytorch_forecasting.__file__)"
+
+# Replace the imports (adjust path as needed)
+find /usr/local/lib/python*/site-packages/pytorch_forecasting -name "*.py" -exec sed -i.bak 's/lightning\.pytorch/pytorch_lightning/g' {} \;
+```
+
+**Solution 3 (Version Downgrade):**
+```bash
+pip uninstall pytorch-forecasting -y
+pip install pytorch-forecasting==1.0.0 pytorch-lightning==2.0.8
+```
+
+### GPU Memory Issues
+
+```bash
+# Check GPU memory
+nvidia-smi
+
+# If out of memory, reduce batch size
+export TFT_BATCH_SIZE=32  # Default is 48 for A5000
+python train_cloud.py
+```
+
+### Data Loading Slow
+
+```bash
+# Use cached data (after first run)
+python train_cloud.py  # Uses cache automatically
+
+# Force fresh processing
+python train_cloud.py --force-refresh
+
+# Check cache status
+python train_cloud.py --cache-info
+```
+
+## 🚀 Training Options
+
+### Quick Test (Recommended First)
+```bash
+# Small dataset for testing
+python train_cloud.py --start-date 2024-01-01 --end-date 2024-03-01
+```
+
+### Full Training
+```bash
+# Full dataset (will take longer)
+python train_cloud.py
+```
+
+### Cache Management
+```bash
+# View cache
+python train_cloud.py --cache-info
+
+# Clear cache (if needed)
+python train_cloud.py --clear-cache
+```
+
+## 💡 Performance Tips
+
+### A4500 (20GB VRAM)
+- Batch size: 32-40
+- Use mixed precision: ✅ Enabled automatically
+- Expected training time: 2-4 hours full dataset
+
+### A5000 (24GB VRAM)  
+- Batch size: 48-64
+- Use mixed precision: ✅ Enabled automatically
+- Expected training time: 1.5-3 hours full dataset
+
+### Spot Instances
+- Aggressive checkpointing: ✅ Enabled automatically
+- Use `/workspace` for persistence
+- Consider shorter training runs with caching
+
+## 📁 File Structure
+
+```
+/workspace/kuant-trading/
+├── data/cache/          # Cached processed data
+├── models/              # Trained models
+├── logs/               # Training logs
+├── train_cloud.py      # Main training script
+└── fix_pytorch_forecasting.py  # Compatibility fix
+```
+
+After successful training, models will be saved in:
+- `models/tft_cloud_runpod.pt` 
+- `models/rl_final_runpod.zip`
 
 ## Runpod-Specific Optimizations
 

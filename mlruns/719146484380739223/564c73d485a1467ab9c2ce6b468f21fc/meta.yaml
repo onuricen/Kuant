@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/onuricen/Documents/Projects/Kuant/mlruns/719146484380739223/564c73d485a1467ab9c2ce6b468f21fc/artifacts
+end_time: 1749068807994
+entry_point_name: ''
+experiment_id: '719146484380739223'
+lifecycle_stage: active
+run_id: 564c73d485a1467ab9c2ce6b468f21fc
+run_name: Cloud_Training_unknown
+run_uuid: 564c73d485a1467ab9c2ce6b468f21fc
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1749068676347
+status: 4
+tags: []
+user_id: onuricen
