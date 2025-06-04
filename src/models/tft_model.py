@@ -52,11 +52,14 @@ class TradingTFT:
         categorical_features = []
         for col in self.config.STATIC_CATEGORICALS + self.config.TIME_VARYING_KNOWN_CATEGORICALS:
             if col in df.columns:
-                if col not in self.label_encoders:
-                    self.label_encoders[col] = LabelEncoder()
-                    df[col] = self.label_encoders[col].fit_transform(df[col].fillna(0))
+                # PyTorch Forecasting expects categorical data as strings, not label encoded
+                # Just ensure the data is string type and handle missing values
+                if df[col].dtype.name == 'category':
+                    # Convert categorical to string and handle missing
+                    df[col] = df[col].astype(str).fillna('unknown')
                 else:
-                    df[col] = self.label_encoders[col].transform(df[col].fillna(0))
+                    # For non-categorical columns, convert to string and handle missing
+                    df[col] = df[col].fillna('unknown').astype(str)
                 categorical_features.append(col)
         
         # Prepare continuous features
@@ -70,21 +73,31 @@ class TradingTFT:
         # Create target variables for multi-task learning
         target_variables = []
         
-        # Classification targets
-        if 'can_long_2_to_1' in df.columns:
-            target_variables.append('can_long_2_to_1')
-        if 'can_short_2_to_1' in df.columns:
-            target_variables.append('can_short_2_to_1')
-        
+        # Prioritize regression targets (float) over classification targets for PyTorch Forecasting
         # Regression targets for quantile prediction
         for horizon in [1, 5, 15, 50]:
             target_col = f'future_return_{horizon}'
             if target_col in df.columns:
-                df[target_col] = df[target_col].fillna(0)
+                df[target_col] = df[target_col].fillna(0).astype(float)
                 target_variables.append(target_col)
         
-        # Use the first available target as the main target
-        main_target = target_variables[0] if target_variables else 'close'
+        # Classification targets (convert to float for TFT compatibility)
+        if 'can_long_2_to_1' in df.columns:
+            df['can_long_2_to_1'] = df['can_long_2_to_1'].astype(float)
+            target_variables.append('can_long_2_to_1')
+        if 'can_short_2_to_1' in df.columns:
+            df['can_short_2_to_1'] = df['can_short_2_to_1'].astype(float)
+            target_variables.append('can_short_2_to_1')
+        
+        # Use the first available target as the main target, fallback to 'close'
+        if target_variables:
+            main_target = target_variables[0]
+        else:
+            main_target = 'close'
+            # Ensure close is float
+            df[main_target] = df[main_target].astype(float)
+        
+        logger.info(f"Using target variable: {main_target} (dtype: {df[main_target].dtype})")
         
         # Create TimeSeriesDataSet
         max_encoder_length = self.config.LOOKBACK_PERIODS

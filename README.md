@@ -211,10 +211,16 @@ pip install -r requirements_cloud.txt
 
 ## 🤝 **Support & Troubleshooting**
 
+### **Recent Fixes**
+- ✅ **Cloud Training**: Fixed logger initialization issue in Google Colab/cloud environments
+- ✅ **Data Validation**: Confirmed 15 years of perfect OHLCV data structure
+- ✅ **RL Training**: Resolved environment integration and model persistence
+
 ### **Common Issues**
 - **CUDA Out of Memory**: Use mobile GPU settings or CPU fallback
 - **Data Loading**: Check file paths and data structure
 - **Training Slow**: Consider cloud options or reduce dataset size
+- **Cloud Errors**: Ensure latest code version (`git pull origin main`)
 
 ### **Performance Optimization**
 - **Cloud Training**: Best performance and cost efficiency

@@ -1,0 +1,63 @@
+# Runpod-optimized requirements for A5000 and CUDA 12.x
+# Tested on Runpod with PyTorch 2.4 + CUDA 12.4
+
+# Core PyTorch stack (compatible with Runpod's PyTorch 2.4 containers)
+torch>=2.0.0
+torchvision>=0.15.0
+pytorch-lightning>=2.0.0
+
+# PyTorch Forecasting (using latest stable version)
+pytorch-forecasting>=1.0.0
+# Alternative if 1.0.0 causes issues: install from git
+# git+https://github.com/sktime/pytorch-forecasting.git
+
+# Essential dependencies for pytorch-forecasting
+scipy>=1.10.0
+optuna>=3.1.0,<5.0.0
+
+# Machine Learning frameworks
+pandas>=1.5.0
+numpy>=1.21.0,<3.0.0
+scikit-learn>=1.2.0
+
+# RL Framework
+stable-baselines3>=2.0.0
+gymnasium>=0.28.0
+
+# Technical analysis
+ta>=0.10.2
+
+# Cloud and monitoring
+mlflow>=2.5.0
+wandb>=0.15.0
+tensorboard>=2.11.0
+
+# System monitoring and GPU utilities
+psutil>=5.9.0
+nvidia-ml-py3>=7.352.0
+
+# Data processing and storage
+joblib>=1.3.0
+pyarrow>=10.0.0
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+plotly>=5.14.0
+
+# Web framework for serving models
+fastapi>=0.100.0
+uvicorn>=0.22.0
+
+# Development utilities
+python-dotenv>=1.0.0
+tqdm>=4.64.0
+requests>=2.28.0
+
+# Additional utilities
+pydantic>=2.0.0
+redis>=4.5.0
+
+# Runpod specific optimizations
+# These help with cloud storage and data transfer
+boto3>=1.26.0 

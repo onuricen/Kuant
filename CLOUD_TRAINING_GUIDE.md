@@ -437,7 +437,7 @@ python train_cloud.py --batch-size 16
 ### Connection Timeouts
 ```bash
 # Use screen/tmux for long sessions
-screen -S training
+screen -S trading
 python train_cloud.py
 # Ctrl+A, D to detach
 ```
@@ -450,6 +450,42 @@ tar -czf data.tar.gz data/
 
 # Use multi-part upload for large files
 aws configure set default.s3.multipart_threshold 64MB
+```
+
+### CUDA/GPU Issues
+```bash
+# Check GPU availability
+nvidia-smi
+
+# Force CPU mode if GPU issues
+python train_cloud.py --cpu-only
+
+# Clear GPU memory if needed
+python -c "import torch; torch.cuda.empty_cache()"
+```
+
+### Colab-Specific Issues
+
+#### "AttributeError: 'CloudTrainer' object has no attribute 'logger'"
+**Fixed in latest version** - Update your code:
+```bash
+# Re-download latest version
+!git pull origin main
+# Or re-clone if needed
+```
+
+#### Session Disconnects
+```python
+# Enable Colab Pro for longer sessions
+# Use checkpointing (automatic in cloud script)
+# Save models to Google Drive frequently
+```
+
+#### Runtime Crashes
+```python
+# Restart runtime and try again
+# Runtime > Restart and run all
+# Reduce batch size if memory issues persist
 ```
 
 ## 📞 Getting Help
@@ -497,3 +533,124 @@ python train_cloud.py --cloud-env [colab|aws|gcp|lambda]
 ### **For Enterprise** → **AWS/GCP Reserved** (Contact for pricing)
 
 The cloud training script automatically detects your environment and optimizes accordingly!
+
+## 📊 **Training Progress & Feedback**
+
+### **What You'll See During Training**
+
+#### **Phase 1: Data Preparation (Current)**
+```
+Loading data for colab environment
+Limiting data to 3 months: 2010-06-06 to 2010-09-19
+Resampled from 89655 1-min bars to 20201 5-min bars
+Starting complete feature engineering pipeline
+Calculated VWAP features for all timeframes
+```
+
+#### **Phase 2: TFT Training**
+```
+=== Cloud TFT Training ===
+Epoch 1/75: [████████████████████] 100% 
+  - train_loss: 0.523
+  - val_loss: 0.445
+  - quantile_loss: 0.234
+  - learning_rate: 0.001
+
+Epoch 2/75: [████████████████████] 100%
+  - train_loss: 0.467
+  - val_loss: 0.421
+  - quantile_loss: 0.198
+  
+Best model saved with validation loss: 0.398
+TFT model saved to: models/tft_cloud_colab.pt
+```
+
+#### **Phase 3: RL Training (Most Verbose)**
+```
+=== Cloud RL Training ===
+Creating vectorized environment...
+Using device: cuda
+
+| rollout/            |          |
+|    ep_len_mean      | 1.2e+03  |
+|    ep_rew_mean      | 245      |
+| time/               |          |
+|    fps              | 1250     |
+|    iterations       | 100      |
+|    time_elapsed     | 79       |
+|    total_timesteps  | 100000   |
+| train/              |          |
+|    approx_kl        | 0.012    |
+|    clip_fraction    | 0.12     |
+|    clip_range       | 0.2      |
+|    entropy_loss     | -2.86    |
+|    explained_variance| 0.76    |
+|    learning_rate    | 0.0003   |
+|    loss             | 0.089    |
+|    policy_gradient_loss| -0.034|
+|    value_loss       | 0.156    |
+
+Saving model checkpoint: rl_checkpoints_colab/rl_model_colab_100000_steps.zip
+Model evaluation: mean_reward = 387.45 (+/- 123.67)
+```
+
+#### **Phase 4: Final Evaluation**
+```
+=== Cloud Evaluation ===
+Episode 1: Reward=421.23, Trades=15, Win Rate=66.7%
+Episode 2: Reward=398.67, Trades=18, Win Rate=61.1%
+...
+Average Episode Reward: 405.89
+```
+
+### **Real-Time Monitoring Commands**
+
+#### **In Google Colab (Additional Cell)**
+```python
+# Monitor GPU usage while training
+!watch -n 5 nvidia-smi
+
+# Check training logs in real-time
+!tail -f logs/cloud_training_colab.log
+
+# View MLflow dashboard
+import mlflow
+print(f"MLflow UI: http://localhost:5000")
+```
+
+#### **Monitor Training Files**
+```python
+# Check model saves
+!ls -la models/
+
+# View latest metrics
+!cat logs/cloud_training_colab.log | tail -20
+
+# Check memory usage
+!free -h && df -h
+```
+
+### **Progress Indicators**
+
+#### **Data Phase**: File loading progress, feature engineering steps
+#### **TFT Phase**: Epoch progress bars, loss curves, validation metrics  
+#### **RL Phase**: Timestep counters, reward plots, policy metrics
+#### **Evaluation**: Episode results, final performance summary
+
+### **Expected Timing (Colab)**
+- **Data Preparation**: 2-3 minutes
+- **TFT Training**: 15-25 minutes (75 epochs)
+- **RL Training**: 45-90 minutes (750k timesteps)
+- **Final Evaluation**: 2-3 minutes
+- **Total**: ~60-120 minutes
+
+### **Getting More Verbose Output**
+
+Add to your training cell:
+```python
+import logging
+logging.getLogger().setLevel(logging.DEBUG)
+
+# Run with extra verbosity
+!python train_cloud.py --cloud-env colab --verbose
+```
